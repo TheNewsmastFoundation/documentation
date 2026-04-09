@@ -1,4 +1,4 @@
-# documentation
+# Newsmast Documentation
 Documentation for all Newsmast repositories
 - thing1
 - thing2

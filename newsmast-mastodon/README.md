@@ -5,4 +5,5 @@ This documentation covers installation, updating, and feature documentation for 
 
 ## Updating
 
-## Features
+## Features / Configuration
+See [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md)

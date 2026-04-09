@@ -1,0 +1,1 @@
+# newsmast-mastodon configuration

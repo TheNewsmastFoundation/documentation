@@ -1,6 +1,6 @@
 # Newsmast Documentation
 Documentation for all Newsmast repositories
-- newsmast-mastodon: Newsmast ruby gem extension for Mastodon
+- [newsmast-mastodon](https://github.com/TheNewsmastFoundation/documentation/tree/main/newsmast-mastodon): Newsmast ruby gem extension for Mastodon
 - thing2
 - thing3
 

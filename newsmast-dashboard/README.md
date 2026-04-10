@@ -68,11 +68,11 @@ Read the comments in the ENV file thoroughly and configure the environment accor
 ### Access the Dashboard
 Go to: http://your-server-ip:3001 (or your configured domain). You should see the Newsmast Dashboard login page. Login with the primary admin credentials you created.
 
-### Activate the Dashboard: Add an API key by following below steps:
+### Activate the Dashboard
 1. Generate an API key: Go to Patchwork Hub, register a new account and verify it. Once you have verified it, generate an API key on the landing page of the Patchwork Hub.
 2. Add the generated API key in your Newsmast Dashboard: Login to your Newsmast Dashboard with the primary admin account. On the left-side menu, click the "API key". In the API key page, add the Key and Secret values generated from the Patchwork Hub.
 
 ## Updating
 
 ## Features / Configuration
-See
+See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md)

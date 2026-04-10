@@ -1,7 +1,6 @@
 # Newsmast Mastodon Plugin configuration
 
 ## Accounts Management
-See 
 
 ### Account
 
@@ -55,13 +54,6 @@ The gem uses the following Redis keys:
 - `spam_filters` / `channel:spam_filters` - Hash of spam filter configurations
 - `content_filters` / `channel:content_filters` - Hash of content filter configurations
 
-
-## Custom Feeds
-```Redis-backed Custom Feeds: Per-account custom timelines stored in Redis with automatic trimming
-Push/Unpush Operations: Add or remove statuses from custom timelines
-Timeline Population: Build custom timelines from scratch using populate_custom
-Merge/Unmerge Support: Merge or remove an account's statuses from another account's custom timeline```
-
 ## Posts
 
 ### ALT Text Generation
@@ -77,3 +69,4 @@ Merge/Unmerge Support: Merge or remove an account's statuses from another accoun
 - `BOOST_POST_API_SECRET` - API secret for boost service authentication
 - `BOOST_POST_USERNAME` - Username for boost service account
 - `BOOST_POST_USER_DOMAIN` - Domain for boost service account
+

@@ -28,10 +28,10 @@ Before starting, ensure you have Docker Engine (version 20.10+ recommended) and 
    ```
 
 2. Clone the repository
-```
-git clone https://github.com/patchwork-hub/patchwork_dashboard.git
-cd patchwork_dashboard
-```
+   ```
+   git clone https://github.com/patchwork-hub/patchwork_dashboard.git
+   cd patchwork_dashboard
+   ```
 
 3. Configure environment
 Create .env file by copying the .env.sample file: ```cp .env.sample .env```
@@ -39,30 +39,30 @@ Read the comments in the ENV file thoroughly and configure the environment accor
 
 4. Start the application
    4.1 Pull and Start Services:
-```
-# Pull the latest image
-docker compose pull
+      ```
+      # Pull the latest image
+      docker compose pull
 
-# Start the services in detached mode
-docker compose up -d --build
-```
+      # Start the services in detached mode
+      docker compose up -d --build
+      ```
    4.2 Verify Container Status:
-```
-# Check if container is running
-docker compose ps
+      ```
+      # Check if container is running
+      docker compose ps
 
-# Check container logs
-docker compose logs -f dashboard
-```
+      # Check container logs
+      docker compose logs -f dashboard
+      ```
 
 5. Initialise the database
-```
-# Run migrations
-docker compose exec dashboard bundle exec rails db:migrate
+   ```
+   # Run migrations
+   docker compose exec dashboard bundle exec rails db:migrate
 
-# Seed the database (creates initial data and master admin)
-docker compose exec dashboard bundle exec rails db:seed
-```
+   # Seed the database (creates initial data and master admin)
+   docker compose exec dashboard bundle exec rails db:seed
+   ```
 
 ### Access the Dashboard
 Go to: http://your-server-ip:3001 (or your configured domain). You should see the Newsmast Dashboard login page. Login with the primary admin credentials you created.

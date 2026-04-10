@@ -38,6 +38,7 @@ Create .env file by copying the .env.sample file: ```cp .env.sample .env```
 Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
 
 4. Start the application
+
    4.1 Pull and Start Services:
       ```
       # Pull the latest image
@@ -55,7 +56,7 @@ Read the comments in the ENV file thoroughly and configure the environment accor
       docker compose logs -f dashboard
       ```
 
-5. Initialise the database
+6. Initialise the database
    ```
    # Run migrations
    docker compose exec dashboard bundle exec rails db:migrate

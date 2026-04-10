@@ -15,25 +15,12 @@ This documentation covers installation, updating, and feature documentation for 
 ### Istalling from source
 
 1. Download newsmast-dashboard repository: LINK_TO_RELEASES
-2. Create .env file by copying the .env.sample file:
-
-```cp .env.sample .env```
-
+2. Create .env file by copying the .env.sample file: ```cp .env.sample .env```
 3. Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
-4. Install the gems:
-
-```bundle install```
-
-5. Run database migrations:
-```bundle exec rails db:migrate```
-
-6. Import required data and create a master admin account:
-
-```bundle exec rails db:seed```
-
-7. Start your server(change the port number according to your need):
-
-```bundle exec rails s -p 3002```
+4. Install the gems: ```bundle install```
+5. Run database migrations: ```bundle exec rails db:migrate```
+6. Import required data and create a master admin account: ```bundle exec rails db:seed```
+7. Start your server(change the port number according to your need): ```bundle exec rails s -p 3002```
 
 #### Activate Patchwork Dashboard
 To fully activate your Patchwork Dashboard, add an API key by following below steps:

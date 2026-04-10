@@ -1,109 +1,152 @@
-# Environment for Patchwork Dashboard
+## Environment for Patchwork Dashboard
+
 ```RAILS_ENV=development```
 
-# Serve static files
+## Serve static files
+
 ```RAILS_SERVE_STATIC_FILES=true```
 
-# Port
+## Port
 Make sure this port is open and not used by other applications.
+
 ```PORT=3001```
 
 For Docker setup, EXTERNAL_PORT should match PORT.
+
 ```EXTERNAL_PORT=3001```
 
-# Mastodon domain
+## Mastodon domain
 This should match the domain you set for LOCAL_DOMAIN when creating your Mastodon instance.
+
 ```LOCAL_DOMAIN=example.com```
 
-# Custom Channels support
+## Custom Channels support
 Set to true to enable, false to disable.
+
 ```CHANNELS_ENABLED=false```
 
-# Post hashtag management for Channels
+## Post hashtag management for Channels
 Set to true to enable, false to disable.
+
 ```CHANNEL_POST_HASHTAG_ENABLED=false```
 
-# Post hashtag management for Newsmast Channels
+## Post hashtag management for Newsmast Channels
 Set to true to enable, false to disable.
+
 ```NEWSMAST_POST_HASHTAG_ENABLED=false```
 
-# Redis
+## Redis
 Connect with your Mastodon instance's redis.
+
 ```REDIS_HOST=your_redis_host```
+
 ```REDIS_PORT=6379```
+
 ```REDIS_PASSWORD=your_redis_password```
+
 ```REDIS_NAMESPACE=dashboard```
+
 ```REDIS_DB=mastodon_instance_redis_db_number```
+
 ```SIDEKIQ_REDIS_DB=mastodon_instance_sidekiq_redis_db_number``` (optional, defaults to REDIS_DB if not set)
 
-# PostgreSQL
+## PostgreSQL
 Connect with your Mastodon instance's database.
+
 ```DB_HOST=your_postgres_host```
+
 ```DB_NAME=your_mastodon_instance_db```
+
 ```DB_USER=your_postgres_user```
+
 ```DB_PASS=your_postgres_password```
+
 ```DB_PORT=5432```
+
 ```DB_POOL=24```
 
-# Patchwork Hub URL
+## Patchwork Hub URL
 To connect with Patchwork Hub for Spam Block and Content Moderation services. Do not change unless you have a custom Patchwork Hub deployment.
+
 ```PATCHWORK_HUB_URL=https://hub.patchwork.online```
 
-# Patchwork Dashboard URL
+## Patchwork Dashboard URL
+
 ```PATCHWORK_DASHBOARD_URL=https://localhost:3001```
 
-# Patchwork Dashboard Credentials
+## Patchwork Dashboard Credentials
 Ensure the credentials are unique and that user with these credentials does not already exist in your Mastodon instance.
+
 ```MASTER_ADMIN_USERNAME=your_patchwork_dashboard_admin_username```
+
 ```MASTER_ADMIN_EMAIL=your_patchwork_dashboard_admin_email```
+
 ```MASTER_ADMIN_PASSWORD=your_patchwork_dashboard_admin_password```
 
-# Mastodon Application Credentials
+## Mastodon Application Credentials
 Obtain these from your Mastodon instance under "Development" settings. Create a new application with the following scopes: read, profile, write, follow, push
 
-## Mastodon instance URL
+### Mastodon instance URL
+
 ```MASTODON_INSTANCE_URL=https://example.com```
-## Mastodon access token
+### Mastodon access token
+
 ```MASTODON_APPLICATION_TOKEN=your_mastodon_application_token```
-## Mastodon client key
+### Mastodon client key
+
 ```MASTODON_CLIENT_ID=your_mastodon_client_id```
-## Mastodon client secret
+### Mastodon client secret
+
 ```MASTODON_CLIENT_SECRET=your_mastodon_client_secret```
 
-# S3-Compatible Object Storage Configuration
+## S3-Compatible Object Storage Configuration
 Configure your S3-compatible object storage for file storage (e.g., AWS S3, DigitalOcean Spaces).
+
 ```S3_ENABLED=false```
+
 ```S3_REGION=your_s3_region```
+
 ```S3_BUCKET=example-bucket```
+
 ```S3_ALIAS_HOST=example-bucket.s3.eu-west-2.amazonaws.com```
+
 ```S3_ENDPOINT=https://s3.eu-west-2.amazonaws.com```
+
 ```AWS_ACCESS_KEY_ID=your_s3_access_key_id```
+
 ```AWS_SECRET_ACCESS_KEY=your_s3_secret_access_key```
 
-# DNS Configuration
+## DNS Configuration
 Configure your DNS provider credentials for automatic DNS record management. This is required only if Bluesky bridged account creation with Bridgy Fed (https://fed.brid.gy/) is enabled. Set to 'true' to use local domain DNS records, 'false' to use Bridgy Fed default handles
 
 When true: handles like 'username@yourdomain.com.ap.brid.gy', requires DNS provider configuration
 
 When false: handles like '@username@yourdomain.com', no DNS configuration needed
+
 ```USE_LOCAL_DOMAIN=true```
 
-# DNS Provider Selection
+### DNS Provider Selection
 Only needed when ```USE_LOCAL_DOMAIN=true```. 
 
-## Supported providers: route53 (default)
+#### Supported providers: route53 (default)
+
 ```DNS_PROVIDER=your_dns_provider```
 
-## AWS Route53 Credentials
+#### AWS Route53 Credentials
 Only needed when ```DNS_PROVIDER=route53```
+
 ```AWS_ACCESS_DNS_RESOLVE_ID=your_access_dns_resolve_id```
+
 ```AWS_SECRET_DNS_RESOLVE_KEY=your_secret_dns_resolve_key```
+
 ```AWS_DNS_REGION=your_dns_region```
 
-# Authentication token for the APIs
+## Authentication token for the APIs
 Generate with the command "openssl rand -hex 64".
+
 ```STATIC_TOKEN=some-random-string```
 
-# Secret Key Base for Rails application
+## Secret Key Base for Rails application
 Generate with the command "rails secret".
+
 ```SECRET_KEY_BASE=your_secret_key_base```

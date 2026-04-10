@@ -23,9 +23,9 @@ Before starting, ensure you have Docker Engine (version 20.10+ recommended) and 
 
 1. Verify Docker installation:
    ```
-docker --version
-docker compose version
-```
+   docker --version
+   docker compose version
+   ```
 
 2. Clone the repository
 ```

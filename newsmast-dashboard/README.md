@@ -19,8 +19,7 @@ This documentation covers installation, updating, and feature documentation for 
 
 ```cp .env.sample .env```
 
-3.Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
-
+3. Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
 4. Install the gems:
 
 ```bundle install```

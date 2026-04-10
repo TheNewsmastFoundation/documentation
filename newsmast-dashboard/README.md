@@ -22,7 +22,7 @@ This documentation covers installation, updating, and feature documentation for 
 Before starting, ensure you have Docker Engine (version 20.10+ recommended) and Docker Compose (version 2.0+ recommended) installed.
 
 1. Verify Docker installation:
-```
+   ```
 docker --version
 docker compose version
 ```
@@ -38,7 +38,7 @@ Create .env file by copying the .env.sample file: ```cp .env.sample .env```
 Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
 
 4. Start the application
-4.1 Pull and Start Services:
+   4.1 Pull and Start Services:
 ```
 # Pull the latest image
 docker compose pull
@@ -46,7 +46,7 @@ docker compose pull
 # Start the services in detached mode
 docker compose up -d --build
 ```
-4.2 Verify Container Status:
+   4.2 Verify Container Status:
 ```
 # Check if container is running
 docker compose ps

@@ -34,28 +34,13 @@
 - `GHOST_ADMIN_API_KEY` - Ghost Admin API key in format `id:secret` for authentication (required only if using Ghost subscriptions feature)
 
 ## Content Filters
-### Environment Variables
 - `LOCAL_DOMAIN` - Your Mastodon server's domain (required for reblog operations)
 - `MAIN_CHANNEL` - Enable/disable main channel reblogging functionality
 - `BOOST_BOT_ENABLED` - Enable/disable automated boost bot
 - `BOOST_COMMUNITY_BOT_URL` - URL for Newsmast bot Lambda service
 - `BOOST_COMMUNITY_BOT_API_KEY` - API key for Newsmast bot authentication
 
-### Database Migrations
-The gem adds the following database columns:
-- `accounts.is_banned` - Boolean flag for banned accounts (default: false)
-- `statuses.is_banned` - Boolean flag for banned statuses (default: false)
-
-### Redis Keys
-The gem uses the following Redis keys:
-- `excluded_status_ids` - Combined banned status IDs (content + spam filters)
-- `content_filters_banned_status_ids` - Status IDs banned by content filters
-- `spam_filters_banned_status_ids` - Status IDs banned by spam filters
-- `spam_filters` / `channel:spam_filters` - Hash of spam filter configurations
-- `content_filters` / `channel:content_filters` - Hash of content filter configurations
-
 ## Posts
-
 ### ALT Text Generation
 - `ALT_TEXT_ENABLED` - Enable/disable automatic ALT text generation (`true`/`false`)
 - `ALT_TEXT_URL` - Base URL for ALT text API service

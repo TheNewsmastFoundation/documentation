@@ -19,7 +19,7 @@ This documentation covers installation, updating, and feature documentation for 
 7. Start your server(change the port number according to your need): ```bundle exec rails s -p 3002```
 
 ### Installing with Docker
-See
+See [docker_install.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-dashboard/docker_install.md)
 
 ### Access the Dashboard
 Go to: http://your-server-ip:3001 (or your configured domain). You should see the Newsmast Dashboard login page. Login with the primary admin credentials you created.

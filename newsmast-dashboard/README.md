@@ -2,7 +2,7 @@
 This documentation covers installation, updating, and feature documentation for the [newsmast-dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard)
 
 ## Installation
- - From source
+ - [From source](https://github.com/TheNewsmastFoundation/documentation/tree/main/newsmast-dashboard#installing-from-source)
  - using Docker image
 
 ### Prerequisites
@@ -12,7 +12,7 @@ This documentation covers installation, updating, and feature documentation for 
  - - e.g. mastodon-4.5.8 requires newsmast-mastodon-4.5.x
  - Ruby (check version here)
 
-### Istalling from source
+### Installing from source
 
 1. Download newsmast-dashboard repository: LINK_TO_RELEASES
 2. Create .env file by copying the .env.sample file: ```cp .env.sample .env```

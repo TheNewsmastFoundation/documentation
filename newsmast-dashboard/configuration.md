@@ -1,5 +1,5 @@
 # Environment for Patchwork Dashboard
-```RAILS_ENV=development
+```RAILS_ENV=development```
 
 # Serve static files
 RAILS_SERVE_STATIC_FILES=true

@@ -6,10 +6,10 @@ This documentation covers installation, updating, and feature documentation for 
 ## Updating
 
 ## Features / Configuration
- - Accounts
- - Content Filters
- - Custom Feeds
- - Posts
+ - [Accounts](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_accounts.md)
+ - [Content Filters](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_content_filters.md)
+ - [Custom Feeds](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_custom_feeds.md)
+ - [Posts](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_posts.md)
  - what
  - else
  - is in

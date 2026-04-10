@@ -5,7 +5,7 @@ This documentation covers installation, updating, and feature documentation for 
 
 ### Prerequisites
  - A running Mastodon service with matching version (e.g. newsmast-dashboard-4.5.2 requires Mastodon 4.5.x)
- - [newsmast-mastodon](https://github.com/TheNewsmastFoundation/newsmast-mastodon) with matching version installed on your Mastodon instance (e.g. mastodon-4.5.8 requires newsmast-mastodon-4.5.x)
+ - The [newsmast-mastodon](https://github.com/TheNewsmastFoundation/newsmast-mastodon) plugin with matching version installed on your Mastodon instance (e.g. mastodon-4.5.8 requires newsmast-mastodon-4.5.x)
  - Ruby (check version here)
 
 ### Installing from source

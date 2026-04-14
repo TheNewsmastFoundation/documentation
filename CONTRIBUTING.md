@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This document is still in draft status.
+
 # Contributing to Newsmast
 
 ## How Can I Contribute?

@@ -37,8 +37,8 @@ If you're unsure whether potential use of an LLM for personal use in research or
 
 ## Releasing
 
-Due to Newsmast's tight integration with Mastodon, we work diligentliy to ensure Mastodon updates are supported by Patchwork within a reasonable timeframe.
-We aim for 2 weeks after the first significant Mastodon beta is released to release a new beta version of Patchwork, and 5 business days after the Mastodon production release for our production release.
+Due to Newsmast's tight integration with Mastodon, we work diligentliy to ensure Mastodon updates are supported by Newsmast within a reasonable timeframe.
+We aim for 2 weeks after the first significant Mastodon beta is released to release a new beta version of Newsmast, and 5 business days after the Mastodon production release for our production release.
 
 Issues & bug reports specifically related to Mastodon upgrades are tagged "mastodon" on GitHub and are given high priority.
 

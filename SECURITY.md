@@ -2,7 +2,7 @@
 
 If you believe you've identified a security vulnerability in Newsmast (a bug that allows something to happen that shouldn't be possible), you can either:
 
-- open a **GitHub security issue** in the appropriate repo (via the **Security** tab, _not_ Issues)
+- open a **GitHub security issue** in the appropriate repo (via the **Security** tab > Advisories, _not_ Issues)
 - reach us at <security@newsmastfoundation.org>
 
 You should _not_ report such issues on public GitHub issues or in other public spaces to give us time to publish a fix for the issue without exposing Newsmast's users to increased risk.

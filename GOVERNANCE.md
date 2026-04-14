@@ -1,4 +1,5 @@
-==DRAFT==
+> [!CAUTION]
+> This document is still in draft status.
 
 # Governance
 

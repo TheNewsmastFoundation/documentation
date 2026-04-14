@@ -14,7 +14,7 @@ All contributors and public representatives of Newsmast are bound by our CODE_OF
 
 ## Project Director
 
-The overall strategy and technical guidance of Patchwork is set by its current director, the [Newsmast Foundation](https://newsmastfoundation.org/), a UK-based charity. They assist in coordinating planning & communication between the Core Team, a variety of stakeholders, and the open source community, as well as providing princpal funding for the ongoing development & marketing of the Newsmast apps.
+The overall strategy and technical guidance is set by its current director, the [Newsmast Foundation](https://newsmastfoundation.org/), a UK-based charity. They assist in coordinating planning & communication between the Core Team, a variety of stakeholders, and the open source community, as well as providing princpal funding for the ongoing development & marketing of the Newsmast apps.
 
 ## Core Team
 The Core Team is responsible for maintainership duities of Newsmast and managing the day-to-day flow of work on the project. The members are individually empowered to make descisions regarding reviewing pull requests, determining when contributions are ready to merge, suggesting improvements to the development process & documentation, and interfacing with community voices. The Core Team is collectively obliged to delibrate carefully and arrive at a consensus view whenever major disagreements arise regarding contributions or process. If there remains an impass, or whenever there's a high-level strategy imbalance, the Project Director may seek outside guidance to assist in breaking the logjam and ensuring a good-faith outcome.

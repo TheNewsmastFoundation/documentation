@@ -55,6 +55,10 @@ In addition, the following service integrations are required:
 
 - S3-compatible object storage for file storage (e.g., AWS S3, DigitalOcean Spaces)
 
+### Changes to Mastodon
+
+Database schema updates, monkeypatches, and in rare cases, source file changes are [documented here](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-dashboard/mastodon_integration_points.md).
+
 ### Code Quality Tools
 
 The project includes several development tools:

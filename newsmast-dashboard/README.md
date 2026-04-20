@@ -6,7 +6,10 @@ This documentation covers installation, updating, and feature documentation for 
 ### Prerequisites
  - A running Mastodon service with matching version (e.g. newsmast-dashboard-4.5.2 requires Mastodon 4.5.x)
  - The [newsmast-mastodon](https://github.com/TheNewsmastFoundation/newsmast-mastodon) plugin with matching version installed on your Mastodon instance (e.g. mastodon-4.5.8 requires newsmast-mastodon-4.5.x)
- - Ruby (check version here)
+ - Ruby (check `.ruby-version` for required version)
+ - PostgreSQL
+ - Redis
+ - ImageMagick
 
 ### Installing from source
 
@@ -32,3 +35,31 @@ Go to: http://your-server-ip:3001 (or your configured domain). You should see th
 
 ## Features / Configuration
 See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md)
+
+## Development
+
+The application is built with the following technologies:
+
+- Ruby on Rails 7.1
+- Puma server
+- Sidekiq (background jobs)
+- Spockets & Import Maps (frontend)
+  - Bootstrap 4
+  - jQuery & Sass
+  - Turbo & Stimulus
+  - jspm.io (third-party frontend assets CDN)
+- kt-paperclip (file attachments)
+  - _maintained fork of the original paperclip gem_
+
+In addition, the following service integrations are required:
+
+- S3-compatible object storage for file storage (e.g., AWS S3, DigitalOcean Spaces)
+
+### Code Quality Tools
+
+The project includes several development tools:
+
+- **Bullet**: N+1 query detection
+- **Rack Mini Profiler**: Request profiling
+- **RuboCop**: Ruby style guide enforcement
+- **AnnotateRB**: Schema annotation for models

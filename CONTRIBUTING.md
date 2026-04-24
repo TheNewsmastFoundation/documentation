@@ -7,19 +7,19 @@
 
 We welcome contributions from the community in the form of code and/or documentation. If you would like to get started, but not sure where, you might look through the existing list of issues & PRs to get a feel for how the project is run. You could also engage in a cursory review of the codebase & documentation in the repository, so you have a general idea of how the software is put together before engaging with your specific feature idea or bugfix.
 
-All contributors to Newsmast are subject to the guidelines & rules as described in CODE_OF_CONDUCT.
+All contributors to Newsmast are subject to the guidelines & rules as described in our [Code of Conduct](https://github.com/TheNewsmastFoundation/documentation/blob/main/CODE_OF_CONDUCT.md).
 
 ### Reporting Bugs
 
-We use GitHub Issues to track and address bug reports. Please describe in as much detail as possible the set of circumstates which led to you problems you ran into, and any other context which might be helpful in us tracking down the root cause (versions, hosting environment, OS, etc.)
+We use GitHub Issues to track and address bug reports. Please describe in as much detail as possible the set of circumstances which led to you problems you ran into, and any other context which might be helpful in us tracking down the root cause (versions, hosting environment, OS, etc.)
 
 ### Security Issues
 
-Please review our reporting guidelines in SECURITY.
+Please review our reporting guidelines in our [Security Policy](https://github.com/TheNewsmastFoundation/documentation/blob/main/SECURITY.md).
 
 ### Suggesting Enhancements
 
-Before working on a new feature or substaintial code change, it's best to ask about your idea in GitHub Discussions. Members of the Core Team and the community at large can workshop the concept and come up with a clear sense of what makes sense to build. Pull Requests unrelated to any existing discussion or issue are less likely to be received with immediate consideration or may be closed outright.
+Before working on a new feature or substantial code change, it's best to ask about your idea in [GitHub Discussions](https://github.com/TheNewsmastFoundation/newsmast-mastodon/discussions). Members of the Core Team and the community at large can workshop the concept and come up with a clear sense of what makes sense to build. Pull Requests unrelated to any existing discussion or issue are less likely to be received with immediate consideration or may be closed outright.
 
 ### Pull Requests
 
@@ -37,7 +37,7 @@ If you're unsure whether potential use of an LLM for personal use in research or
 
 ## Releasing
 
-Due to Newsmast's tight integration with Mastodon, we work diligentliy to ensure Mastodon updates are supported by Newsmast within a reasonable timeframe.
+Due to Newsmast's tight integration with Mastodon, we work diligently to ensure Mastodon updates are supported by Newsmast within a reasonable timeframe.
 We aim for 2 weeks after the first significant Mastodon beta is released to release a new beta version of Newsmast, and 5 business days after the Mastodon production release for our production release.
 
 Issues & bug reports specifically related to Mastodon upgrades are tagged "mastodon" on GitHub and are given high priority.

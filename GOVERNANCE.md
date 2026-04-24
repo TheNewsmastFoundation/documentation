@@ -7,17 +7,18 @@
 
 This document describes the governance structure of the Newsmast apps and Mastodon extensions. It is intended to be informative for users of the project as well as future contributors and partners who may be interested in participating in the continued development and success of Newsmast.
 
-For more information on how to become a code contributor, see CONTRIBUTING.
-To learn more about how we handle security concerns, see SECURITY.
+For more information on how to become a code contributor, see our [Contributing Guide](https://github.com/TheNewsmastFoundation/documentation/blob/main/CONTRIBUTING.md).  
+To learn more about how we handle security concerns, see our [Security Policy](https://github.com/TheNewsmastFoundation/documentation/blob/main/SECURITY.md).
 
-All contributors and public representatives of Newsmast are bound by our CODE_OF_CONDUCT.
+All contributors and public representatives of Newsmast are bound by our [Code of Conduct](https://github.com/TheNewsmastFoundation/documentation/blob/main/CODE_OF_CONDUCT.md).
 
 ## Project Director
 
-The overall strategy and technical guidance is set by its current director, the [Newsmast Foundation](https://newsmastfoundation.org/), a UK-based charity. They assist in coordinating planning & communication between the Core Team, a variety of stakeholders, and the open source community, as well as providing princpal funding for the ongoing development & marketing of the Newsmast apps.
+The overall strategy and technical guidance is set by its current director, the [Newsmast Foundation](https://newsmastfoundation.org/), a UK-based charity. They assist in coordinating planning & communication between the Core Team, a variety of stakeholders, and the open source community, as well as providing principal funding for the ongoing development & marketing of the Newsmast apps.
 
 ## Core Team
-The Core Team is responsible for maintainership duities of Newsmast and managing the day-to-day flow of work on the project. The members are individually empowered to make descisions regarding reviewing pull requests, determining when contributions are ready to merge, suggesting improvements to the development process & documentation, and interfacing with community voices. The Core Team is collectively obliged to delibrate carefully and arrive at a consensus view whenever major disagreements arise regarding contributions or process. If there remains an impass, or whenever there's a high-level strategy imbalance, the Project Director may seek outside guidance to assist in breaking the logjam and ensuring a good-faith outcome.
+
+The Core Team is responsible for maintainership duties of Newsmast and managing the day-to-day flow of work on the project. The members are individually empowered to make decisions regarding reviewing pull requests, determining when contributions are ready to merge, suggesting improvements to the development process & documentation, and interfacing with community voices. The Core Team is collectively obliged to deliberate carefully and arrive at a consensus view whenever major disagreements arise regarding contributions or process. If there remains an impasse, or whenever there's a high-level strategy imbalance, the Project Director may seek outside guidance to assist in breaking the logjam and ensuring a good-faith outcome.
 
 ### Joining the Core Team
 

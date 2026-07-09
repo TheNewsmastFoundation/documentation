@@ -31,6 +31,14 @@ To configure Accounts Management settings, see [https://github.com/TheNewsmastFo
 - **Email Notification Settings**: Toggle all email notifications on/off
 - **Alt-Text Settings**: User preference for alt-text reminders on media uploads
 - **Locale Management**: API endpoint for setting user language preference
+- **Article Notifications**: Opt in/out of new article notifications, including Leicester news notifications
+
+### Account Deletion
+- **Self-Service Deletion**: Authenticated users can request deletion of their own account
+
+### Conversations
+- **Conversation Status**: Check whether a conversation exists for the account
+- **Bulk Read**: Mark all conversations as read in a single request
 
 ### Internationalization (i18n)
 - **11 Supported Languages**: English, German, Spanish, French, Italian, Japanese, Portuguese, Brazilian Portuguese, Russian, and Welsh
@@ -69,6 +77,11 @@ POST /api/v1/custom_passwords/change_password
 POST /api/v1/custom_passwords/change_email
 ```
 
+### Authentication
+```
+POST /api/v1/custom_passwords/bristol_cable_sign_in  # Bristol Cable membership sign-in
+```
+
 ### User Settings
 ```
 GET  /api/v1/patchwork/email_settings
@@ -76,4 +89,24 @@ POST /api/v1/patchwork/email_settings/notification
 GET  /api/v1/patchwork/alttext_settings
 POST /api/v1/patchwork/alttext_settings/alttext
 POST /api/v1/user_locales
+```
+
+### Article Notifications
+```
+GET  /api/v1/accounts/article_notifications          # Get article notification preference
+POST /api/v1/accounts/article_notifications          # Update article notification preference
+GET  /api/v1/accounts/leicester_notification         # Get Leicester news notification preference
+POST /api/v1/accounts/leicester_notification         # Update Leicester news notification preference
+```
+
+### Account Deletion
+```
+POST   /api/v1/delete_account                        # Request deletion of the authenticated account
+DELETE /api/v1/patchwork/account_deletion/:id        # Delete an account
+```
+
+### Conversations
+```
+GET  /api/v1/patchwork/conversations/check_conversation  # Check whether a conversation exists
+POST /api/v1/patchwork/conversations/read_all            # Mark all conversations as read
 ```

@@ -60,7 +60,7 @@ GET /api/v1/channels/starter_packs_channels    # List available starter pack cha
 GET /api/v1/channels/:id/starter_packs_detail  # Get details for a specific starter pack channel
 ```
 
-> **Newsmast Dashboard required:** Starter pack definitions and their channel collections are created and managed in the dashboard. The gem exposes that data through these Mastodon API endpoints.
+> **Newsmast Dashboard required:** Starter pack definitions and their channel collections are created and managed in Newsmast Dashboard. The gem exposes that data through these Mastodon API endpoints.
 
 Starter pack channels provide curated collections of accounts and channels that new users can follow to quickly populate their feeds.
 

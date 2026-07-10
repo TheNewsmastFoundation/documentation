@@ -2,7 +2,7 @@
 
 To configure Accounts Management settings, see [https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management)
 
-> **Newsmast Dashboard integration:** Community-admin account data, server-wide search and Bluesky defaults, and mail branding are managed in the Newsmast Dashboard. The remaining account APIs on this page are provided by the gem or Mastodon and do not require the dashboard.
+> **Newsmast Dashboard integration:** Dashboard support is **Required** for Dashboard-managed community-admin data, server-wide search and Bluesky defaults, and mail branding, using the **shared database** and supported host behavior. Account APIs, password/email flows, notifications, and self-service deletion are otherwise provided by the gem or Mastodon and do **not** require the Dashboard. See [Dashboard administration](../newsmast-dashboard/features_administration.md) and [server settings](../newsmast-dashboard/features_server_settings.md).
 
 ### Account Management
 - **Custom Account Creation**: Enhanced account creation with Newsmast Dashboard-managed community admin integration

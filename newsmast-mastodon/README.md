@@ -77,15 +77,19 @@ When upgrading Mastodon itself, upgrade Mastodon and the gem together so their `
 
 Many features in the gem work without the Newsmast Dashboard. Some features, however, consume records or server settings managed by the [Newsmast Dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard).
 
-| Feature area | Dependency | Responsibility of Newsmast Dashboard |
-|--------------|------------|---------------------------------------|
-| [Content filters](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_content_filters.md) and community automation | Required | Manages global and community filter rules, spam filters, federation controls, and channel configuration. The gem applies those rules in Mastodon. |
-| [Channel-backed custom feeds and starter packs](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_custom_feeds.md) | Required | Creates the communities, community-admin accounts, and channel collections consumed by these endpoints. |
-| [Server-level account and post settings](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_posts.md) | Configuration | Manages settings such as search defaults, Bluesky bridging, long-post limits, local-only posting, and email branding. The gem implements the corresponding Mastodon behaviour. |
-| Account APIs, drafts, reactions, and notifications | Not required | These features are implemented by the gem or the host Mastodon server. |
-| Ghost, WordPress, Firebase, CiviCRM, ALT text, and relay integrations | Not required | These connect directly to their respective external services and are configured separately. |
+| Feature area | Dashboard dependency | Configuration owner | Runtime owner | Mechanism and absence behavior |
+|--------------|----------------------|---------------------|---------------|-------------------------------|
+| [Content filters](features_content_filters.md) and community automation | Required | Dashboard | Gem | Shared database and Redis/Sidekiq. Dashboard manages filter/channel data; gem applies supported rules. Without Dashboard-managed records, this configuration is absent. |
+| [Channel-backed custom feeds and starter packs](features_custom_feeds.md) | Required | Dashboard | Gem | Shared database and Newsmast custom API. The gem cannot expose Dashboard-managed definitions if they are absent. |
+| [Server-level account and post settings](features_posts.md) | Required for Dashboard-managed settings | Dashboard | Gem/host Mastodon | Shared database and Patchwork Hub API. The host uses its own available defaults when Dashboard data is absent. |
+| Account deletion and relay custom APIs | Optional | Dashboard | Gem/host Mastodon | Mastodon REST API and Newsmast custom API. Dashboard workflows are unavailable when it is absent. |
+| Bluesky bridge and email branding | Required for Dashboard-managed provisioning | Dashboard | Gem/host/external service | Shared database and external service. The gem's unrelated features continue without it. |
+| Account APIs, drafts, reactions, and notifications | Not required | Gem/host Mastodon | Gem/host Mastodon | Gem configuration and host APIs. |
+| Ghost, WordPress, Firebase, CiviCRM, ALT text, and relay timeline integrations | Not required | Gem/external service | Gem/external service | Gem configuration and external service. |
 
 Dependency notes in each feature page identify which parts require dashboard-managed data or configuration. Code identifiers containing `Patchwork`, including API paths and model names, retain their implementation names.
+
+For Dashboard operator workflows, see [Newsmast Dashboard](../newsmast-dashboard/README.md) and its [technical architecture reference](../newsmast-dashboard/mastodon_integration_points.md).
 
 ## Features / Configuration
  - [Accounts](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_accounts.md)

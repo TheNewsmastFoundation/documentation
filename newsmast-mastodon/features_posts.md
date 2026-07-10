@@ -1,6 +1,6 @@
 # Newsmast Mastodon Plugin Posts Features
 
-> **Newsmast Dashboard integration:** The dashboard manages server-level settings such as character limits and local-only post availability, as well as community channel and boost-bot configuration. Drafts, scheduled and quote posts, reactions, link previews, and notification enhancements are provided by the gem or Mastodon without requiring the dashboard.
+> **Newsmast Dashboard integration:** The Dashboard is **Required** for Dashboard-managed character-limit, local-only-post, community-channel, and boost-bot configuration via the **shared database**. The gem or host Mastodon owns the matching runtime behavior. Drafts, scheduled and quote posts, reactions, link previews, and notification enhancements are **Not required** to use the Dashboard. See [Dashboard server settings](../newsmast-dashboard/features_server_settings.md) and [channels](../newsmast-dashboard/features_channels.md).
 
 ## Post Management
 - **Custom Character Limits**: Configure custom character limits per instance through server settings (default: 500 characters)

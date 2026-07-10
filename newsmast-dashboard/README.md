@@ -1,69 +1,43 @@
-# Newsmast Dashboard Documentation
-This documentation covers installation, updating, and feature documentation for the [newsmast-dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard)
+# Newsmast Dashboard
 
-## Installation
+Newsmast Dashboard is the administrative application for a Newsmast/Mastodon deployment. The Dashboard repository (`patchwork_dashboard`, also called Patchwork Dashboard in implementation contexts) is the technical source of truth. It is a separate Rails application, not a direct Newsmast Mastodon gem dependency.
 
-### Prerequisites
- - A running Mastodon service with matching version (e.g. newsmast-dashboard-4.5.2 requires Mastodon 4.5.x)
- - The [newsmast-mastodon](https://github.com/TheNewsmastFoundation/newsmast-mastodon) plugin with matching version installed on your Mastodon instance (e.g. mastodon-4.5.8 requires newsmast-mastodon-4.5.x)
- - Ruby (check `.ruby-version` for required version)
- - PostgreSQL
- - Redis
- - ImageMagick
+## Prerequisites and compatibility
 
-### Installing from source
+Install against an already-running, compatible Mastodon deployment with reachable PostgreSQL and Redis. The Dashboard needs Mastodon application credentials and access to the shared services. Follow the technical source repository for exact supported deployment details and release information: [Patchwork Dashboard releases](https://github.com/patchwork-hub/patchwork_dashboard/releases).
 
-1. Download newsmast-dashboard repository: LINK_TO_RELEASES
-2. Create .env file by copying the .env.sample file: ```cp .env.sample .env```
-3. Read the comments in the ENV file thoroughly and configure the environment accordingly. (See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md))
-4. Install the gems: ```bundle install``` 
-5. Run database migrations: ```bundle exec rails db:migrate```
-6. Import required data and create a master admin account: ```bundle exec rails db:seed```
-7. Start your server(change the port number according to your need): ```bundle exec rails s -p 3002```
+## Install and update
 
-### Installing with Docker
-See [docker_install.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-dashboard/docker_install.md)
+- [Source installation](https://github.com/patchwork-hub/patchwork_dashboard#installation-and-updates)
+- [Docker installation](docker_install.md)
+- [Technical configuration reference](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/configuration/environment-variables.md)
 
-### Access the Dashboard
-Go to: http://your-server-ip:3001 (or your configured domain). You should see the Newsmast Dashboard login page. Login with the primary admin credentials you created.
+Run Dashboard migrations in its deployment after updating it. Install or update Newsmast Mastodon using its own procedure and migrations; do not assume one repository manages the other's schema.
 
-### Activate the Dashboard
-1. Generate an API key: Go to Patchwork Hub, register a new account and verify it. Once you have verified it, generate an API key on the landing page of the Patchwork Hub.
-2. Add the generated API key in your Newsmast Dashboard: Login to your Newsmast Dashboard with the primary admin account. On the left-side menu, click the "API key". In the API key page, add the Key and Secret values generated from the Patchwork Hub.
+## Patchwork Hub activation
 
-## Updating
+Patchwork Hub is optional. When used for synchronized keyword-filter groups and server settings, configure its URL in the Dashboard environment and add Hub API credentials through the Dashboard API-key interface. A Dashboard can retain local configuration without Hub, but Hub-synchronized operations will not run.
 
-## Features / Configuration
-See [configuration](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md)
+## Dependency matrix
 
-## Development
+| Capability | Configuration owner | Runtime owner | Mechanism | Dashboard absent |
+| --- | --- | --- | --- | --- |
+| Channels, starter packs, collections | Dashboard | Newsmast Mastodon | shared database / Newsmast custom API | Gem cannot use Dashboard-managed definitions |
+| Channel reblogging | Dashboard | Newsmast Mastodon | shared database / Mastodon REST API / Redis/Sidekiq | No Dashboard boost-bot configuration |
+| Global and community filters | Dashboard | Newsmast Mastodon | shared database / Redis/Sidekiq | No Dashboard-managed filter configuration |
+| Search, long posts, local-only availability | Dashboard | Newsmast Mastodon/Mastodon | shared database / Patchwork Hub API | Host behavior depends on its own defaults/configuration |
+| Account deletion and relays | Dashboard | host/gem endpoints | Mastodon REST API / Newsmast custom API | Dashboard workflows unavailable |
+| Bluesky bridge and email branding | Dashboard | Dashboard jobs and host support | external service / shared database | Feature provisioning unavailable |
+| Drafts, reactions, Ghost, WordPress, CiviCRM | Newsmast Mastodon | Newsmast Mastodon | gem configuration | Not required |
 
-The application is built with the following technologies:
+## Features
 
-- Ruby on Rails 7.1
-- Puma server
-- Sidekiq (background jobs)
-- Spockets & Import Maps (frontend)
-  - Bootstrap 4
-  - jQuery & Sass
-  - Turbo & Stimulus
-  - jspm.io (third-party frontend assets CDN)
-- kt-paperclip (file attachments)
-  - _maintained fork of the original paperclip gem_
+- [Channels](features_channels.md)
+- [Content filters](features_content_filters.md)
+- [Server settings](features_server_settings.md)
+- [Administration](features_administration.md)
+- [Integrations](features_integrations.md)
 
-In addition, the following service integrations are required:
+## Technical source
 
-- S3-compatible object storage for file storage (e.g., AWS S3, DigitalOcean Spaces)
-
-### Changes to Mastodon
-
-Database schema updates, monkeypatches, and in rare cases, source file changes are [documented here](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-dashboard/mastodon_integration_points.md).
-
-### Code Quality Tools
-
-The project includes several development tools:
-
-- **Bullet**: N+1 query detection
-- **Rack Mini Profiler**: Request profiling
-- **RuboCop**: Ruby style guide enforcement
-- **AnnotateRB**: Schema annotation for models
+Read the Dashboard repository for [architecture](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/architecture/mastodon-integration.md), [Dashboard API](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/api/dashboard-api.md), and [troubleshooting](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/troubleshooting/common-issues.md).

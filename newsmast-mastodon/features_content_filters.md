@@ -1,6 +1,6 @@
 # Newsmast Mastodon Plugin Content Filters Features
 
-> **Newsmast Dashboard required:** The dashboard manages global and community keyword rules, spam filters, federation controls, and channel configuration. The gem consumes that configuration to filter and ban content, maintain Redis caches, filter timelines, and automate channel reblogging in Mastodon.
+> **Newsmast Dashboard required:** The Dashboard is **Required** to manage global/community keyword rules, spam filters, federation controls, and channel configuration through the **shared database** and **Patchwork Hub API**. The gem owns supported filtering, Redis cache maintenance, timeline behavior, and channel reblogging. See [Dashboard content filters](../newsmast-dashboard/features_content_filters.md).
 
 ## Content Moderation & Filtering
 - **Keyword Filtering**: Block posts containing specific keywords across different timeline types (hashtag, text, or both)

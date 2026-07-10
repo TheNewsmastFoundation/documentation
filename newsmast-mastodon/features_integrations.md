@@ -4,6 +4,8 @@ This document covers the plugin's integrations with external services and the Ne
 
 These integrations are configured directly through environment variables and their respective external services. They do not require Newsmast Dashboard.
 
+> **Newsmast Dashboard boundary:** Ghost, WordPress, Firebase, CiviCRM, deep linking, and the integrations documented below are **Not required** to use Newsmast Dashboard. Dashboard-owned Bluesky/DNS, Patchwork Hub, relay-operation, and storage workflows are documented separately in [Dashboard integrations](../newsmast-dashboard/features_integrations.md).
+
 For the related environment variables, see [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md).
 
 ## Content Webhooks

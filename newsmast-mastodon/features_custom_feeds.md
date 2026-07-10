@@ -1,5 +1,7 @@
 # Newsmast Mastodon Plugin Custom Feeds Features
 
+> **Newsmast Dashboard dependency:** The Dashboard is **Required** for channel-backed feeds and starter packs because it owns community, collection, and active boost-bot records through the **shared database**. The gem owns the feed runtime. The For You and FediBuzz instance timelines are **Not required** to use the Dashboard. See [Dashboard channels](../newsmast-dashboard/features_channels.md).
+
 ## Custom Timeline Management
 - **Redis-backed Custom Feeds**: Per-account custom timelines stored in Redis with automatic trimming
 - **Push/Unpush Operations**: Add or remove statuses from custom timelines
@@ -13,7 +15,7 @@
 GET /api/v1/timelines/@:username/feed  # Retrieve custom feed for a community admin account
 ```
 
-> **Newsmast Dashboard required:** This endpoint reads community and community-admin records created by the dashboard. The target community admin must be configured as an active boost bot.
+> **Newsmast Dashboard required:** This endpoint reads community and community-admin records created by the Dashboard. The target community admin must be configured as an active boost bot.
 
 **Parameters:**
 - `local` (boolean) - Show only local statuses

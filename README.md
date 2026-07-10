@@ -1,12 +1,16 @@
-# Newsmast Documentation
-Documentation for all Newsmast repositories
-- [newsmast-mastodon](https://github.com/TheNewsmastFoundation/documentation/tree/main/newsmast-mastodon): ruby gem extension for Mastodon
-- [newsmast-dashboard](https://github.com/TheNewsmastFoundation/documentation/tree/main/newsmast-dashboard): rails dashboard for enhancing Mastodon servers with community channels, hashtag relays, and content curation
-- newsmast-android
-- newsmast-ios
+# Newsmast documentation
 
-## License
-This documentation is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+This repository contains public operator and user documentation for Newsmast products.
 
-### How to attribute
-Please attribute this work to **The Newsmast Foundation** and provide a link to [newsmastfoundation.org](https://newsmastfoundation.org/)
+## Terminology
+
+- **Newsmast Dashboard** is the administration product. Its source repository is `patchwork_dashboard`, also called Patchwork Dashboard in implementation contexts.
+- **Newsmast Mastodon** is the Mastodon extension gem installed in the host Mastodon application.
+- **Patchwork Hub** is an optional external synchronization service.
+
+## Products
+
+- [Newsmast Dashboard](newsmast-dashboard/README.md): installation, configuration, channel administration, filtering, settings, and integrations.
+- [Newsmast Mastodon](newsmast-mastodon/README.md): host extension features, APIs, and gem configuration.
+
+The Dashboard and gem are separate applications. Feature pages identify whether a component is required, optional, or not required, and the mechanism used to cooperate.

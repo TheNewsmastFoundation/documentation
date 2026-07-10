@@ -2,6 +2,8 @@
 
 This document covers the plugin's integrations with external services and the Newsmast mobile apps: content webhooks (Ghost and WordPress), mobile deep linking, and CiviCRM membership verification.
 
+These integrations are configured directly through environment variables and their respective external services. They do not require Newsmast Dashboard.
+
 For the related environment variables, see [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md).
 
 ## Content Webhooks

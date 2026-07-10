@@ -32,7 +32,7 @@ All variables are optional unless noted otherwise.
 ### User Preferences
 
 - `DEFAULT_EMAIL_NOTIFICATIONS_ENABLED` - Default email notification state for new users (`true` or `false`)
-- `DASHBOARD_INSTANCE_URL` - Mastodon connected Dashboard URL
+- `DASHBOARD_INSTANCE_URL` - URL of the Newsmast Dashboard connected to the Mastodon server
 
 ### CiviCRM Membership Check (Optional)
 
@@ -57,6 +57,9 @@ See [Integrations](https://github.com/TheNewsmastFoundation/documentation/blob/m
 - `WORDPRESS_URL` - WordPress instance URL (automatically added to the host's allowed hosts when set)
 
 ## Content Filters
+
+Global and community keyword rules, spam filters, federation controls, and their server-level toggles are managed in the Newsmast Dashboard. The variables below configure the gem-side reblog and boost services that act on dashboard-managed community data. See [Content Filters](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_content_filters.md) for the feature workflow.
+
 - `LOCAL_DOMAIN` - Your Mastodon server's domain (required for reblog operations)
 - `MAIN_CHANNEL` - Enable/disable main channel reblogging functionality
 - `BOOST_BOT_ENABLED` - Enable/disable automated boost bot
@@ -84,6 +87,9 @@ Used by the well-known deep link endpoints for the Newsmast mobile apps. See [In
 - `ANDROID_SHA256_CERT_FINGERPRINTS` - Comma-separated SHA-256 certificate fingerprints for Android app verification (required for Android)
 
 ## Posts
+
+Server-level settings such as long-post limits and local-only post availability are managed in the Newsmast Dashboard. The variables below configure optional external services used by the gem.
+
 ### ALT Text Generation
 
 > **Note:** Automatic ALT text generation currently supports [alttext.ai](https://alttext.ai/) only. Set `ALT_TEXT_URL` to the alttext.ai API endpoint and `ALT_TEXT_SECRET` to your alttext.ai API key.

@@ -2,10 +2,12 @@
 
 To configure Accounts Management settings, see [https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management)
 
+> **Newsmast Dashboard integration:** Community-admin account data, server-wide search and Bluesky defaults, and mail branding are managed in the Newsmast Dashboard. The remaining account APIs on this page are provided by the gem or Mastodon and do not require the dashboard.
+
 ### Account Management
-- **Custom Account Creation**: Enhanced account creation with community admin integration
+- **Custom Account Creation**: Enhanced account creation with Newsmast Dashboard-managed community admin integration
 - **Auto-Follow**: Automatically follow default accounts on signup (configurable via `AUTO_FOLLOW_ACCOUNTS` env var)
-- **Server Settings**: Automatic search opt-in/opt-out and Bluesky bridge configuration for new users
+- **Server Settings**: Automatic search opt-in/opt-out and Bluesky bridge configuration for new users, managed in the Newsmast Dashboard
 - **Extended Credentials**: Account credentials API includes email in response
 
 ### Push Notifications
@@ -47,7 +49,7 @@ To configure Accounts Management settings, see [https://github.com/TheNewsmastFo
 
 ### Mailer Customization
 - **Branded Templates**: Customizable email templates with logo and brand colors
-- **Dynamic Branding**: Support for custom mail header/footer logos via `SiteUpload`
+- **Dynamic Branding**: Support for mail header/footer logos managed in the Newsmast Dashboard via `SiteUpload`
 - **App Store Links**: Configurable iOS and Android app store links in emails
 
 ### Database Extensions

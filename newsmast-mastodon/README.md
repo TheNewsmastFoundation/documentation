@@ -73,6 +73,20 @@ The engine mounts its routes at the server root (they are not namespaced under a
 
 When upgrading Mastodon itself, upgrade Mastodon and the gem together so their `X.Y.Z` versions stay aligned.
 
+## Newsmast Dashboard dependencies
+
+Many features in the gem work without the Newsmast Dashboard. Some features, however, consume records or server settings managed by the [Newsmast Dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard).
+
+| Feature area | Dependency | Responsibility of Newsmast Dashboard |
+|--------------|------------|---------------------------------------|
+| [Content filters](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_content_filters.md) and community automation | Required | Manages global and community filter rules, spam filters, federation controls, and channel configuration. The gem applies those rules in Mastodon. |
+| [Channel-backed custom feeds and starter packs](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_custom_feeds.md) | Required | Creates the communities, community-admin accounts, and channel collections consumed by these endpoints. |
+| [Server-level account and post settings](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_posts.md) | Configuration | Manages settings such as search defaults, Bluesky bridging, long-post limits, local-only posting, and email branding. The gem implements the corresponding Mastodon behaviour. |
+| Account APIs, drafts, reactions, and notifications | Not required | These features are implemented by the gem or the host Mastodon server. |
+| Ghost, WordPress, Firebase, CiviCRM, ALT text, and relay integrations | Not required | These connect directly to their respective external services and are configured separately. |
+
+Dependency notes in each feature page identify which parts require dashboard-managed data or configuration. Code identifiers containing `Patchwork`, including API paths and model names, retain their implementation names.
+
 ## Features / Configuration
  - [Accounts](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_accounts.md)
  - [Content Filters](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/features_content_filters.md)

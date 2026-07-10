@@ -1,4 +1,7 @@
-# Newsmast Mastodon Plugin Content FIlters Features
+# Newsmast Mastodon Plugin Content Filters Features
+
+> **Newsmast Dashboard required:** The dashboard manages global and community keyword rules, spam filters, federation controls, and channel configuration. The gem consumes that configuration to filter and ban content, maintain Redis caches, filter timelines, and automate channel reblogging in Mastodon.
+
 ## Content Moderation & Filtering
 - **Keyword Filtering**: Block posts containing specific keywords across different timeline types (hashtag, text, or both)
 - **Hashtag Filtering**: Filter content based on hashtags with exact matching
@@ -123,14 +126,14 @@ rake content_filters:install
 ## Usage
 
 ### Setting up Keyword Filters
-1. Access the Content Filters section in your Patchwork Dashboard
+1. Access the Content Filters section in your Newsmast Dashboard
 2. Add keywords or phrases to block
 3. Choose filter type: hashtag, text, or both
 4. Set whether filters are active
 5. Configure community-specific filters if needed
 
 ### Managing Federation Controls
-1. Navigate to Server Settings in the dashboard
+1. Navigate to Server Settings in the Newsmast Dashboard
 2. Enable/disable Threads integration
 3. Configure Bluesky post visibility
 4. Set federation policies

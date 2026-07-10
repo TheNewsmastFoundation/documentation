@@ -1,5 +1,8 @@
 # Newsmast Mastodon Plugin Posts Features
-  ## Post Management
+
+> **Newsmast Dashboard integration:** The dashboard manages server-level settings such as character limits and local-only post availability, as well as community channel and boost-bot configuration. Drafts, scheduled and quote posts, reactions, link previews, and notification enhancements are provided by the gem or Mastodon without requiring the dashboard.
+
+## Post Management
 - **Custom Character Limits**: Configure custom character limits per instance through server settings (default: 500 characters)
 - **Draft Status Management**: Create, update, publish, and delete draft posts with full API support
 - **Scheduled Posts**: Extended scheduled status management with custom parameters
@@ -23,14 +26,14 @@
 - **Custom Boost Bots**: Add or remove statuses to/from per-account custom boost bot instances
 - **Relay Management**: Create and delete relay connections for federated content
 - **Custom Timeline Filtering**: Extended account status filtering with multiple exclusion options
-- **Boost Channel Management**: Special handling for boost bot accounts
+- **Boost Channel Management**: Special handling for boost bot accounts configured for Newsmast Dashboard communities
 
 ### Engagement
 - **Custom Status Reactions**: Emoji reactions on statuses, stored per account with add/update and remove support
-- **Local-Only Posts**: Per-account setting controlling whether posts are kept local to the instance
+- **Local-Only Posts**: Per-account setting controlling whether posts are kept local to the instance; server-level availability is managed in the Newsmast Dashboard
 
 ### Server Configuration
-- **Flexible Server Settings**: Hierarchical server settings with parent-child relationships
+- **Flexible Server Settings**: Hierarchical server settings managed in the Newsmast Dashboard and consumed by the gem
 - **Environment-Based Toggles**: Feature flags for ALT text generation, post boosting, and user toggles
 - **Instance Serialization**: Extended instance metadata with custom configuration exposure
 

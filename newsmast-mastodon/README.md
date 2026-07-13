@@ -1,7 +1,7 @@
 # Newsmast Mastodon Documentation
 This documentation covers installation, updating, and feature documentation for the [newsmast-mastodon ruby gem](https://github.com/TheNewsmastFoundation/newsmast-mastodon).
 
-The gem is a Rails engine that mounts inside a host Mastodon server to add content filters, post management, account management, custom feeds, content channels, and integrations with the Newsmast mobile apps and the [Newsmast Dashboard](https://github.com/patchwork-hub/patchwork_dashboard).
+The gem is a Rails engine that mounts inside a host Mastodon server to add content filters, post management, account management, custom feeds, content channels, and integrations with the Newsmast mobile apps and the [Newsmast Dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard).
 
 ## Versioning
 
@@ -75,7 +75,7 @@ When upgrading Mastodon itself, upgrade Mastodon and the gem together so their `
 
 ## Newsmast Dashboard dependencies
 
-Many features in the gem work without the Newsmast Dashboard. Some features, however, consume records or server settings managed by the [Newsmast Dashboard](https://github.com/patchwork-hub/patchwork_dashboard).
+Many features in the gem work without the Newsmast Dashboard. Some features, however, consume records or server settings managed by the [Newsmast Dashboard](https://github.com/TheNewsmastFoundation/newsmast-dashboard).
 
 | Feature area | Dashboard dependency | Configuration owner | Runtime owner | Mechanism and absence behavior |
 |--------------|----------------------|---------------------|---------------|-------------------------------|

@@ -4,7 +4,7 @@ This repository contains public operator and user documentation for Newsmast pro
 
 ## Terminology
 
-- **Newsmast Dashboard** is the administration product. Its source repository is `patchwork_dashboard`, also called Patchwork Dashboard in implementation contexts.
+- **Newsmast Dashboard** is the administration product. Its source repository is `newsmast-dashboard`.
 - **Newsmast Mastodon** is the Mastodon extension gem installed in the host Mastodon application.
 - **Patchwork Hub** is an optional external synchronization service.
 

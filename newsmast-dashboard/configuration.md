@@ -1,6 +1,6 @@
 # Newsmast Dashboard configuration
 
-Use the Dashboard repository's [environment-variable reference](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/configuration/environment-variables.md) as the canonical setting-by-setting source. Copy the sample environment file, use protected secret storage, and never publish credential values.
+Use the Dashboard repository's [environment-variable reference](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/configuration/environment-variables.md) as the canonical setting-by-setting source. Copy the sample environment file, use protected secret storage, and never publish credential values.
 
 ## Required groups
 

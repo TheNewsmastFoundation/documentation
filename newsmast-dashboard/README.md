@@ -1,16 +1,16 @@
 # Newsmast Dashboard
 
-Newsmast Dashboard is the administrative application for a Newsmast/Mastodon deployment. The Dashboard repository (`patchwork_dashboard`, also called Patchwork Dashboard in implementation contexts) is the technical source of truth. It is a separate Rails application, not a direct Newsmast Mastodon gem dependency.
+Newsmast Dashboard is the administrative application for a Newsmast/Mastodon deployment. The [`newsmast-dashboard`](https://github.com/TheNewsmastFoundation/newsmast-dashboard) repository is the technical source of truth. The former `patchwork_dashboard` name remains in some implementation and deployment identifiers. The Dashboard is a separate Rails application, not a direct Newsmast Mastodon gem dependency.
 
 ## Prerequisites and compatibility
 
-Install against an already-running, compatible Mastodon deployment with reachable PostgreSQL and Redis. The Dashboard needs Mastodon application credentials and access to the shared services. Follow the technical source repository for exact supported deployment details and release information: [Patchwork Dashboard releases](https://github.com/patchwork-hub/patchwork_dashboard/releases).
+Install against an already-running, compatible Mastodon deployment with reachable PostgreSQL and Redis. The Dashboard needs Mastodon application credentials and access to the shared services. Follow the technical source repository for exact supported deployment details and release information: [Newsmast Dashboard releases](https://github.com/TheNewsmastFoundation/newsmast-dashboard/releases).
 
 ## Install and update
 
-- [Source installation](https://github.com/patchwork-hub/patchwork_dashboard#installation-and-updates)
+- [Source installation](https://github.com/TheNewsmastFoundation/newsmast-dashboard#installation-and-development)
 - [Docker installation](docker_install.md)
-- [Technical configuration reference](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/configuration/environment-variables.md)
+- [Technical configuration reference](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/configuration/environment-variables.md)
 
 Run Dashboard migrations in its deployment after updating it. Install or update Newsmast Mastodon using its own procedure and migrations; do not assume one repository manages the other's schema.
 
@@ -40,4 +40,4 @@ Patchwork Hub is optional. When used for synchronized keyword-filter groups and 
 
 ## Technical source
 
-Read the Dashboard repository for [architecture](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/architecture/mastodon-integration.md), [Dashboard API](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/api/dashboard-api.md), and [troubleshooting](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/troubleshooting/common-issues.md).
+Read the Dashboard repository for [architecture](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/architecture/mastodon-integration.md), [Dashboard API](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/api/dashboard-api.md), and [troubleshooting](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/troubleshooting/common-issues.md).

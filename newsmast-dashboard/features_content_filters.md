@@ -6,4 +6,4 @@ Use the Dashboard to create global keyword-filter groups, activate/deactivate gr
 
 Turning the content or spam filter setting on refreshes the corresponding Dashboard filter data. The Dashboard manages the configuration; Newsmast Mastodon owns supported timeline/filter enforcement and Redis-backed runtime behavior. Check both applications and Redis when a filter is not effective.
 
-Configure Hub and Redis as described in [configuration](configuration.md). Read the [technical filter reference](https://github.com/patchwork-hub/patchwork_dashboard/blob/main/docs/features/content-filters.md) and the related [Newsmast Mastodon guide](../newsmast-mastodon/features_content_filters.md).
+Configure Hub and Redis as described in [configuration](configuration.md). Read the [technical filter reference](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/docs/features/content-filters.md) and the related [Newsmast Mastodon guide](../newsmast-mastodon/features_content_filters.md).

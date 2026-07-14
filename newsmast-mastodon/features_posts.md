@@ -75,6 +75,8 @@ Custom boost bots are configured with `{USERNAME}_INSTANCE_URL`, `{USERNAME}_CLI
 GET    /api/v1/local_only_posts/getLocalOnlySetting  # Get the account's local-only post setting
 ```
 
+To expose the Local-Only Posts compose/status UI in a host Mastodon app, run `bundle exec rails newsmast_mastodon:install` so the frontend/view override files are copied into the host instance, then rebuild assets (`yarn build:development` or `yarn build:production`). See [Installation](README.md#installation).
+
 ### Relay Management
 ```
 POST   /api/v1/patchwork/relays           # Create a new relay connection

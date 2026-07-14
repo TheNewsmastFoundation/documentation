@@ -123,6 +123,8 @@ rake content_filters:update_banned_tags
 rake content_filters:install
 ```
 
+`content_filters:install` is a backward-compatibility alias for `newsmast_mastodon:install`. It copies gem-shipped frontend/view override files and Chewy indexes into the host Mastodon app; rebuild assets afterwards with `yarn build:development` (or `yarn build:production`). For the canonical installation flow, see [README Installation](README.md#installation).
+
 ## Usage
 
 ### Setting up Keyword Filters

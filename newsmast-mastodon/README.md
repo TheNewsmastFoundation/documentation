@@ -46,9 +46,25 @@ Always install a gem version whose `X.Y.Z` matches your Mastodon server version.
    bundle exec rails db:migrate
    ```
 
-4. Configure the plugin using environment variables. See [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md).
+4. Install the gem-shipped Chewy indexes and frontend override files into the host Mastodon app:
 
-5. Restart your Mastodon web and Sidekiq services so the engine, routes, and background workers are loaded.
+   ```bash
+   bundle exec rails newsmast_mastodon:install
+   ```
+
+   This command copies override files (including compose/status UI files and `admin/shared/_status.html.haml`) and Chewy indexes from the gem into the host app. Rebuild assets afterwards:
+
+   ```bash
+   yarn build:development  # or yarn build:production
+   ```
+
+   Backward-compatibility aliases are available: `bundle exec rake local_only_posts:install` and `bundle exec rake content_filters:install`.
+
+   Commit the copied host-app files as part of your Mastodon instance changes.
+
+5. Configure the plugin using environment variables. See [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md).
+
+6. Restart your Mastodon web and Sidekiq services so the engine, routes, and background workers are loaded.
 
 The engine mounts its routes at the server root (they are not namespaced under a sub-path) and verifies at boot that the host Mastodon version matches the gem's declared requirement. A mismatch produces a warning in development and test, and aborts boot in production.
 
@@ -68,8 +84,17 @@ The engine mounts its routes at the server root (they are not namespaced under a
    bundle exec rails db:migrate
    ```
 
-4. Review [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md) for any new environment variables introduced by the update.
-5. Restart your Mastodon web and Sidekiq services.
+4. Reinstall Chewy indexes and frontend override files and rebuild assets (overrides may change between versions):
+
+   ```bash
+   bundle exec rails newsmast_mastodon:install
+   yarn build:development  # or yarn build:production
+   ```
+
+   Backward-compatibility aliases are available: `bundle exec rake local_only_posts:install` and `bundle exec rake content_filters:install`.
+
+5. Review [configuration.md](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md) for any new environment variables introduced by the update.
+6. Restart your Mastodon web and Sidekiq services.
 
 When upgrading Mastodon itself, upgrade Mastodon and the gem together so their `X.Y.Z` versions stay aligned.
 

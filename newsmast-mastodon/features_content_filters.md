@@ -1,4 +1,7 @@
-# Newsmast Mastodon Plugin Content FIlters Features
+# Newsmast Mastodon Plugin Content Filters Features
+
+> **Newsmast Dashboard required:** The Dashboard is **Required** to manage global/community keyword rules, spam filters, federation controls, and channel configuration through the **shared database** and **Patchwork Hub API**. The gem owns supported filtering, Redis cache maintenance, timeline behavior, and channel reblogging. See [Dashboard content filters](../newsmast-dashboard/features_content_filters.md).
+
 ## Content Moderation & Filtering
 - **Keyword Filtering**: Block posts containing specific keywords across different timeline types (hashtag, text, or both)
 - **Hashtag Filtering**: Filter content based on hashtags with exact matching
@@ -73,31 +76,31 @@ The gem uses the following Redis keys:
 ### BanTagWorker
 Checks tags against keyword filters and updates banned status:
 ```ruby
-BanTagWorker.perform_async
+NewsmastMastodon::BanTagWorker.perform_async
 ```
 
 ### AccountBannedWorker
 Checks accounts against keyword filters and bans matching accounts:
 ```ruby
-AccountBannedWorker.perform_async
+NewsmastMastodon::AccountBannedWorker.perform_async
 ```
 
 ### StatusBannedWorker
 Checks statuses against keyword filters and marks them as banned:
 ```ruby
-StatusBannedWorker.perform_async
+NewsmastMastodon::StatusBannedWorker.perform_async
 ```
 
 ### BanStatusWorker
 Checks individual status and applies banning or reblogging based on filters:
 ```ruby
-BanStatusWorker.perform_async(status_id)
+NewsmastMastodon::BanStatusWorker.perform_async(status_id)
 ```
 
 ### ReblogChannelsWorker
 Handles automated reblogging to community channels:
 ```ruby
-ReblogChannelsWorker.perform_async(status_id, account_id)
+NewsmastMastodon::ReblogChannelsWorker.perform_async(status_id, account_id)
 ```
 
 ## Rake Tasks
@@ -120,17 +123,19 @@ rake content_filters:update_banned_tags
 rake content_filters:install
 ```
 
+`content_filters:install` is a backward-compatibility alias for `newsmast_mastodon:install`. It copies gem-shipped frontend/view override files and Chewy indexes into the host Mastodon app; rebuild assets afterwards with `yarn build:development` (or `yarn build:production`). For the canonical installation flow, see [README Installation](README.md#installation).
+
 ## Usage
 
 ### Setting up Keyword Filters
-1. Access the Content Filters section in your Patchwork Dashboard
+1. Access the Content Filters section in your Newsmast Dashboard
 2. Add keywords or phrases to block
 3. Choose filter type: hashtag, text, or both
 4. Set whether filters are active
 5. Configure community-specific filters if needed
 
 ### Managing Federation Controls
-1. Navigate to Server Settings in the dashboard
+1. Navigate to Server Settings in the Newsmast Dashboard
 2. Enable/disable Threads integration
 3. Configure Bluesky post visibility
 4. Set federation policies

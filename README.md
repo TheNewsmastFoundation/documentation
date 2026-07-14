@@ -15,6 +15,10 @@ This repository contains public operator and user documentation for Newsmast pro
 
 The Dashboard and gem are separate applications. Feature pages identify whether a component is required, optional, or not required, and the mechanism used to cooperate.
 
+## Policy scope
+
+This repository provides shared, cross-product policy guidance. Each product repository may also include repository-specific `SECURITY` and `GOVERNANCE` details that apply to that codebase.
+
 ## License
 
 This repository is published under [LICENSE.md](LICENSE.md) (Creative Commons Attribution 4.0 International, CC BY 4.0). Reuse should retain attribution to The Newsmast Foundation and link back to the repository when practical.

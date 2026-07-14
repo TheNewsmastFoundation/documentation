@@ -76,31 +76,31 @@ The gem uses the following Redis keys:
 ### BanTagWorker
 Checks tags against keyword filters and updates banned status:
 ```ruby
-BanTagWorker.perform_async
+NewsmastMastodon::BanTagWorker.perform_async
 ```
 
 ### AccountBannedWorker
 Checks accounts against keyword filters and bans matching accounts:
 ```ruby
-AccountBannedWorker.perform_async
+NewsmastMastodon::AccountBannedWorker.perform_async
 ```
 
 ### StatusBannedWorker
 Checks statuses against keyword filters and marks them as banned:
 ```ruby
-StatusBannedWorker.perform_async
+NewsmastMastodon::StatusBannedWorker.perform_async
 ```
 
 ### BanStatusWorker
 Checks individual status and applies banning or reblogging based on filters:
 ```ruby
-BanStatusWorker.perform_async(status_id)
+NewsmastMastodon::BanStatusWorker.perform_async(status_id)
 ```
 
 ### ReblogChannelsWorker
 Handles automated reblogging to community channels:
 ```ruby
-ReblogChannelsWorker.perform_async(status_id, account_id)
+NewsmastMastodon::ReblogChannelsWorker.perform_async(status_id, account_id)
 ```
 
 ## Rake Tasks

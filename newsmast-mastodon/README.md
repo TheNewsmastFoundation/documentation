@@ -23,7 +23,7 @@ Always install a gem version whose `X.Y.Z` matches your Mastodon server version.
 ### Prerequisites
 
 - A running Mastodon server whose version matches the gem version you intend to install (e.g. `newsmast_mastodon 4.5.11.x` requires Mastodon `4.5.11`).
-- Ruby `>= 3.3` (the gem is tested against Ruby 3.3 and 3.4).
+- Ruby `>= 3.2.0, < 3.5.0` (the gem is tested against Ruby 3.2, 3.3, and 3.4).
 - Access to the Mastodon server's `Gemfile` and the ability to run migrations and restart services.
 
 ### Installing into your Mastodon server

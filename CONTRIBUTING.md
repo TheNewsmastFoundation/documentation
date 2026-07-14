@@ -19,7 +19,13 @@ Please review our reporting guidelines in our [Security Policy](https://github.c
 
 ### Suggesting Enhancements
 
-Before working on a new feature or substantial code change, it's best to ask about your idea in [GitHub Discussions](https://github.com/TheNewsmastFoundation/newsmast-mastodon/discussions). Members of the Core Team and the community at large can workshop the concept and come up with a clear sense of what makes sense to build. Pull Requests unrelated to any existing discussion or issue are less likely to be received with immediate consideration or may be closed outright.
+Before working on a new feature or substantial code change, open or join the discussion in the repository you plan to change:
+
+- For shared documentation changes, use [documentation discussions](https://github.com/TheNewsmastFoundation/documentation/discussions) and [documentation issues](https://github.com/TheNewsmastFoundation/documentation/issues).
+- For Dashboard changes, use [newsmast-dashboard discussions](https://github.com/TheNewsmastFoundation/newsmast-dashboard/discussions) and [newsmast-dashboard issues](https://github.com/TheNewsmastFoundation/newsmast-dashboard/issues).
+- For gem/Mastodon extension changes, use [newsmast-mastodon discussions](https://github.com/TheNewsmastFoundation/newsmast-mastodon/discussions) and [newsmast-mastodon issues](https://github.com/TheNewsmastFoundation/newsmast-mastodon/issues).
+
+Members of the Core Team and the community at large can workshop the concept and come up with a clear sense of what makes sense to build. Pull Requests unrelated to any existing discussion or issue are less likely to be received with immediate consideration or may be closed outright.
 
 ### Pull Requests
 

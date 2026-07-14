@@ -22,7 +22,7 @@ The Core Team is responsible for maintainership duties of Newsmast and managing 
 
 ### Joining the Core Team
 
-To be considered as a candidate to join the Core Team, an existing Core Team member must recommend you. Ideally, you would already be well known to the community, having contributed code, documentation, or solutions which benefit the project and further its goals. If you are interested in joining and don't already have a relationship with anyone on the Core Team, please [send a message to ____] to express your desire to join the Core Team and what sorts of contributions you would like to make to Newsmast.
+To be considered as a candidate to join the Core Team, an existing Core Team member must recommend you. Ideally, you would already be well known to the community, having contributed code, documentation, or solutions which benefit the project and further its goals. If you are interested in joining and don't already have a relationship with anyone on the Core Team, please email [security@newsmastfoundation.org](mailto:security@newsmastfoundation.org) to express your desire to join the Core Team and what sorts of contributions you would like to make to Newsmast.
 
 ### Leaving the Core Team
 

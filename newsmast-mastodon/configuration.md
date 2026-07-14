@@ -32,7 +32,6 @@ All variables are optional unless noted otherwise.
 ### User Preferences
 
 - `DEFAULT_EMAIL_NOTIFICATIONS_ENABLED` - Default email notification state for new users (`true` or `false`)
-- `DASHBOARD_INSTANCE_URL` - URL of the Newsmast Dashboard connected to the Mastodon server
 
 ### CiviCRM Membership Check (Optional)
 

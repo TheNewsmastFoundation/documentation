@@ -1,4 +1,4 @@
-# Support, Contributions, etc.
+# Support & Contributing
 
 ...
 

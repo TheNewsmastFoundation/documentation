@@ -1,4 +1,4 @@
-# Customizing
+# Customizing Newsmast
 
 Newsmast makes a number of customization options available by setting environment variables. Here's a guide to making the system work for you. Be sure to read [[Getting the Lay of the Land]] first so you understand more about the various features mentioned.
 

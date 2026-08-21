@@ -120,6 +120,86 @@ Server-level settings such as long-post limits and local-only post availability 
 
 ## Dashboard Environment Variables
 
-...
+When you install the admin dashboard, you'll need to set these environment variables as part of your server configuration or by copying the `.env.sample` [[link]] file over to `.env` and modifying accordingly. You can find additional instructions for determining some of these variables within the `.env.sample` file.
 
-<!-- to fill in -->
+## Rails Runtime
+
+- `RAILS_ENV`, `RAILS_SERVE_STATIC_FILES`, `SECRET_KEY_BASE` - Common settings used to configure Rails application at boot
+- `PORT`, `EXTERNAL_PORT` - The server localhost port (for Docker setup, `EXTERNAL_PORT` should match `PORT`)
+- `STATIC_TOKEN` API bearer-token validation for selected endpoints
+
+## Admin Credentials
+
+Please ensure the following credentials are unique and a user with these credentials does _not_ exist in your Mastodon instance.
+
+`MASTER_ADMIN_USERNAME` - Username of the dashboard admin user
+`MASTER_ADMIN_EMAIL` - Email address of the admin user
+`MASTER_ADMIN_PASSWORD` - Password of the admin user
+
+## Mastodon Connection
+
+Obtain these variables from your Mastodon instance under "Development" settings. Create a new application with the following scopes: `read`, `profile`, `write`, `follow`, `push`.
+
+- `LOCAL_DOMAIN` - This should match the domain you set for `LOCAL_DOMAIN` when creating your Mastodon instance
+- `MASTODON_INSTANCE_URL` - The public web address for your Mastodon instance
+- `MASTODON_APPLICATION_TOKEN` - Your dev application access token
+- `MASTODON_CLIENT_ID` - Your  dev application client key
+- `MASTODON_CLIENT_SECRET` - Your  dev application client secret
+
+## Database Connection
+
+Your Mastodon instance and the admin dashboard are dependent on a single database.
+
+- `DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_PORT, DB_POOL` - You can copy these environment variables from your Mastodon server configuration
+- `MAX_THREADS`, `DB_SSLMODE`, `PREPARED_STATEMENTS` - Advanced DB settings as used in ActiveRecord config
+
+<!--  `DB_READ_ONLY_USER`, `DB_READ_ONLY_PASS`, `DB_HOST_REPLICA` …why are these in only the staging environment in config/database.yml ? -->
+
+## Redis Connection
+
+Your Mastodon instance and the admin dashboard can share the same Redis server.
+
+- `REDIS_HOST`, `REDIS_PORT`, `REDIS_PASSWORD` - You can copy these environment variables from your Mastodon server configuration
+- `REDIS_NAMESPACE` - Use a unique namespace for some settings storage (defaults to `dashboard`)
+- `REDIS_DB` - Database name to use within Redis
+- `SIDEKIQ_REDIS_DB` - Optional, will override the `REDIS_DB` variable for Sidekiq if set
+
+## Features
+
+Aspects of this functionality is also managed by the [[newsmast-mastodon]] plugin gem.
+
+`CHANNELS_ENABLED` - Enable custom Channels support (`true` or `false`, defaults to disabled)
+`CHANNEL_POST_HASHTAG_ENABLED` - Enable post hashtag management for Channels (`true` or `false`, defaults to disabled)
+`NEWSMAST_POST_HASHTAG_ENABLED` - Enable post hashtag management for Newsmast Channels (`true` or `false`, defaults to disabled)
+`PATCHWORK_HUB_URL` - To connect with Patchwork Hub for Spam Block and Content Moderation services, plus settings synchronization. API credentials are managed in the Dashboard API-key interface
+
+## Service Integrations
+
+### Email Notifications
+
+Used for Action Mailer for admin alerts and user invites. You might look into copying these over from your Mastodon server configuration.
+
+`SMTP_SERVER` - Server address for your SMTP server
+`SMTP_PORT` - SMTP port number (defaults to `587`)
+`SMTP_LOGIN, SMTP_PASSWORD` - SMTP access credentials
+`SMTP_DOMAIN` - Domain name of the "from" email addresses
+
+### S3-Compatible Object Storage Configuration
+
+Configure your S3-compatible object storage for file storage (e.g., AWS S3, DigitalOcean Spaces). You might look into copying these environment variables from your Mastodon server configuration.
+
+- `S3_ENABLED` - Enable/disable S3 storage (`true`/`false`, defaults to disabled)
+- `S3_REGION, S3_BUCKET, S3_ALIAS_HOST, S3_ENDPOINT` - These are provided by your S3-compatible service after bucket is created
+- `AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY` - S3-compatible access credentials
+
+### DNS Configuration
+
+Configure your DNS provider credentials for automatic DNS record management. This is required when you want Newsmast to set up domain-based bridged handles on Bluesky (`USE_LOCAL_DOMAIN=true`), rather than the default handles provided by [Bridgy Fed](https://fed.brid.gy/). Route 53 is the only DNS service supported out of the box.
+
+- `USE_LOCAL_DOMAIN` - When `true` (default), sets up bridged handles like `@username.yourdomain.com`, otherwise `@username.yourdomain.com.ap.brid.gy`.
+
+<!-- ^ This explanation is reversed in .env.sample, I'm assuming the "Bluesky Bridge Handle Configuration" docs page was correct although it still gets the ATProto handles wrong (they're not @user@domain like ActivityPub) -->
+
+- `AWS_ACCESS_DNS_RESOLVE_ID, AWS_SECRET_DNS_RESOLVE_KEY, AWS_DNS_REGION` - These access credentials are provided by Route53.
+
+> Note: [[You could write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.

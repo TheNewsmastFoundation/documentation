@@ -91,8 +91,6 @@ Add this integration to notify subscribers when a WordPress post is published.
 
 <!-- add more info to set up the webhook… -->
 
-<!-- Dashboard-owned Bluesky/DNS, Patchwork Hub, relay-operation, and storage workflows will need to be documented separately -->
-
 ### Custom Relay & Instances Timeline (Optional)
 
 - `CUSTOM_RELAY_DOMAINS` - Comma-separated source instance domains to subscribe to via FediBuzz relay endpoints (e.g., `mastodon.social,mastodon.beer`). Powers the instances timeline endpoint. See [[Custom Feeds]]

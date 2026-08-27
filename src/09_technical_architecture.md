@@ -39,8 +39,3 @@ Controllers / models / views/emails / etc.
 
 ...
 <!-- to fill in -->
-
-### REST API Access
-
-...
-<!-- to fill in -->

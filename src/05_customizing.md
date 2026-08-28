@@ -93,7 +93,7 @@ Add this integration to notify subscribers when a WordPress post is published.
 
 ### Custom Relay & Instances Timeline (Optional)
 
-- `CUSTOM_RELAY_DOMAINS` - Comma-separated source instance domains to subscribe to via FediBuzz relay endpoints (e.g., `mastodon.social,mastodon.beer`). Powers the instances timeline endpoint. See [[Custom Feeds]]
+- `CUSTOM_RELAY_DOMAINS` - Comma-separated source instance domains to subscribe to via FediBuzz relay endpoints (e.g., `mastodon.social,mastodon.beer`). Powers the instances timeline endpoint.
 
 ### Post Enhancements
 

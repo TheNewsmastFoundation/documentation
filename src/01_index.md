@@ -7,12 +7,14 @@
 
 <!-- NOTE: everything in src/ is intended (eventually) to supersede `newsmast-dashboard` & `newsmast-mastodon` folders in this repo. -->
 
-
 The [Newsmast Foundation](https://newsmastfoundation.org) helps mission-driven organisations move their communities to a custom, directly-managed platform. We bring people together in safe, healthy, independent spaces with our flexible, user-friendly customised apps.
 
+At the core of our platform is a [Mastodon](https://docs.joinmastodon.org)-based installation with custom extensions to support a set of tentpole features and additional functionality. This is accomplished through:
 
-At the core of our platform is a Mastodon-based installation with custom extensions to support a set of tentpole features and additional functionality. This is accomplished through **(a)** a plugin which runs within the Mastodon host, and **(b)** an optional admin dashboard application. Both of these aspects support our mobile app delivery. 
+* **(a)** A plugin which runs within the Mastodon host.
+* **(b)** An optional admin dashboard application.
 
+Both of these aspects support our mobile app delivery. 
 
 ## Features Enabled by the Plugin
 
@@ -24,7 +26,7 @@ Through connection to client membership databases, our apps can cross-check new 
 
 We’ve worked hard to remove some of the pain-points that trouble new Mastodon users. Namely, direct messages and replies. We’ve made DMs feel like DMs again, removing them from the timeline and putting them in a dedicated chat space within our apps. For replies, we’ve added threads in the main timeline, re-injecting posts with new replies back into the chronological timeline and letting users see the conversation as they scroll. 
 
-### Integrations with other services (some)
+### Integrations with Other Services
 
 Our apps integrate with the platforms our clients already use. This lets us pull content like news articles from Ghost, podcasts from WordPress, videos from YouTube, or directories from CiviCRM. 
 
@@ -45,3 +47,5 @@ Using our Channel technology, we can build spaces dedicated to the discussion. T
 ### Content Filters
 
 Digital spaces come with multiple moderation challenges. To try and reduce these, we have hundreds of filters to prevent potentially harmful content from the wider Social Web federating into our servers. We work with our client partners to customise these lists based on their specific community needs. 
+
+The dashboard also provides support for some additional integrations such as domain-based account bridging to Bluesky.

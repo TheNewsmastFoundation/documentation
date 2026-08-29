@@ -33,7 +33,7 @@ bundle exec rails newsmast_mastodon:install
 and then rebuild frontend assets:
 
 ```sh
-yarn build:development  # or yarn build:production
+yarn build:production  # or yarn build:development if you're just testing
 ```
 
 Now restart the Mastodon instance (both the web server and the Sidekiq background service), and verify that it boots successfully. If there's any detected mismatch between the Mastodon version and the gem version match, you'll see an error logged to the console. <!-- Does it outright crash or is it just a warning? -->
@@ -93,8 +93,6 @@ docker compose exec app bundle exec rails db:seed
 
 3. Log into the dashboard with your admin credentials (as specified in `.env`).
 
-...
-
 <!-- What is the public address? https://localhost:3001 ? -->
 
 ### Manual Installation
@@ -107,18 +105,19 @@ cp .env.sample .env
 $EDITOR .env
 ```
 
-2. Install dependencies, setup database <!-- what about frontend assets? -->, and boot the Rails application server.
+2. Install dependencies, setup database, and boot the Rails application server.
 
 ```sh
 bin/setup
 bundle exec rails server
 ```
 
-3. Log into the dashboard with your admin credentials (as specified in `.env`).
+<!-- TODO: the bin/setup script sees to be missing some stuff, specifically building frontend assets, and I'm not sure it should end with the bin/rails restart either -->
 
+3. Log into the dashboard with your admin credentials (as specified in `.env`).
 
 ## Further Setup
 
-<!-- Further setup notes like setting up a reverse proxy, file permissions, etc. -->
+<!-- TODO: further setup notes like setting up a reverse proxy, file permissions, etc. -->
 
 If you need to upgrade in the future, [[read the guide here]].

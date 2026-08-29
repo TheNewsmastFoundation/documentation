@@ -1,6 +1,6 @@
 # When Things Go Wrong
 
-There are a number of categories of issues you may run into with setting up the `newsmast-mastodon` plugin and the admin dashboard. Let's step through these and explore what you can do to track down the relevant conundrums:
+There are a number of categories of issues you may run into with setting up the plugin gem or the admin dashboard. Let's step through these and explore what you can do to track down the relevant conundrums:
 
 ## Plugin Gem Setup Fails
 

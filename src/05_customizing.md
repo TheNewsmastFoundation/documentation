@@ -5,7 +5,7 @@ Newsmast makes a number of customization options available by setting environmen
 > [!NOTE]
 > All variables are optional unless noted otherwise.
 
-The following variables would need to be set on the server where your Mastodon instance (and `newsmast-mastodon`) is installed.
+The following variables would need to be set on the server where your Mastodon instance (and `newsmast_mastodon`) is installed.
 
 ## General
 
@@ -16,10 +16,6 @@ The following variables would need to be set on the server where your Mastodon i
 - `AUTO_FOLLOW_ENABLED` - Enable auto-follow behavior for newly registered users (`true` or `false`, defaults to disabled)
 - `AUTO_FOLLOW_ACCOUNTS` - Comma-separated list of account handles to auto-follow after user registration
 - `WELCOME_EMAIL_DISABLED` - Disable welcome email for newly registered users (set to `true` to disable, defaults to enabled)
-
-## Enhancements to Posting
-
-See [[Integrations]] below for some additional post-related functionality such as automatic alt-text generation and automatic post boosting.
 
 ## Channels & Feeds
 
@@ -83,15 +79,19 @@ Add this integration to notify subscribers when a Ghost newsletter or post is pu
 - `GHOST_WEBHOOK_SECRET` - Secret token used to verify incoming Ghost webhooks
 - `GHOST_NOTIFICATION_SENDER_NAME` - Sender name for Ghost-related notifications (defaults to `Development Patchwork`)
 
+<!-- TODO: I think we need to add instructions on how to set up the webhook on the WordPres side. -->
+
 ### WordPress Integration (Optional)
 
 Add this integration to notify subscribers when a WordPress post is published.
 
 - `WORDPRESS_URL` - WordPress instance URL (automatically added to the host's allowed hosts when set)
 
-<!-- add more info to set up the webhook… -->
+<!-- TODO: I think we need to add instructions on how to set up the webhook on the WordPres side. -->
 
 ### Custom Relay & Instances Timeline (Optional)
+
+The custom relay timeline feature subscribes the host Mastodon instance to FediBuzz relay URLs and stores delivered statuses in a per-domain Redis feed.
 
 - `CUSTOM_RELAY_DOMAINS` - Comma-separated source instance domains to subscribe to via FediBuzz relay endpoints (e.g., `mastodon.social,mastodon.beer`). Powers the instances timeline endpoint.
 
@@ -102,7 +102,7 @@ Server-level settings such as long-post limits and local-only post availability 
 > **Note:** Automatic ALT text generation currently supports [alttext.ai](https://alttext.ai/) only. Set `ALT_TEXT_URL` to the alttext.ai API endpoint and `ALT_TEXT_SECRET` to your alttext.ai API key.
 
 - `ALT_TEXT_ENABLED` - Enable/disable automatic ALT text generation (`true`/`false`)
-- `ALT_TEXT_URL` - Base URL for ALT text API service (only [alttext.ai](https://alttext.ai/) is currently supported)
+- `ALT_TEXT_URL` - Base URL for ALT text API service
 - `ALT_TEXT_SECRET` - API key for ALT text service authentication
 - `ALT_TEXT_USER_TOGGLE` - Require user opt-in for ALT text generation when `true`, unless `SKIP_ALT_TEXT_USER_SETTING` is enabled
 - `SKIP_ALT_TEXT_USER_SETTING` - Bypass the per-user alt text setting when `true`; this takes precedence over `ALT_TEXT_USER_TOGGLE`.
@@ -164,7 +164,7 @@ Your Mastodon instance and the admin dashboard can share the same Redis server.
 
 ## Features
 
-Aspects of this functionality is also managed by the [[newsmast-mastodon]] plugin gem.
+Aspects of this functionality is also managed by the [[newsmast_mastodon]] plugin gem.
 
 `CHANNELS_ENABLED` - Enable custom Channels support (`true` or `false`, defaults to disabled)
 `CHANNEL_POST_HASHTAG_ENABLED` - Enable post hashtag management for Channels (`true` or `false`, defaults to disabled)
@@ -200,4 +200,4 @@ Configure your DNS provider credentials for automatic DNS record management. Thi
 
 - `AWS_ACCESS_DNS_RESOLVE_ID, AWS_SECRET_DNS_RESOLVE_KEY, AWS_DNS_REGION` - These access credentials are provided by Route53.
 
-> Note: [[You could write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.
+> Note: [[It's possible to write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.

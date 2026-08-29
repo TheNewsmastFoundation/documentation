@@ -130,9 +130,9 @@ When you install the admin dashboard, you'll need to set these environment varia
 
 Please ensure the following credentials are unique and a user with these credentials does _not_ exist in your Mastodon instance.
 
-`MASTER_ADMIN_USERNAME` - Username of the dashboard admin user
-`MASTER_ADMIN_EMAIL` - Email address of the admin user
-`MASTER_ADMIN_PASSWORD` - Password of the admin user
+- `MASTER_ADMIN_USERNAME` - Username of the dashboard admin user
+- `MASTER_ADMIN_EMAIL` - Email address of the admin user
+- `MASTER_ADMIN_PASSWORD` - Password of the admin user
 
 ## Mastodon Connection
 
@@ -166,10 +166,10 @@ Your Mastodon instance and the admin dashboard can share the same Redis server.
 
 Aspects of this functionality is also managed by the [[newsmast_mastodon]] plugin gem.
 
-`CHANNELS_ENABLED` - Enable custom Channels support (`true` or `false`, defaults to disabled)
-`CHANNEL_POST_HASHTAG_ENABLED` - Enable post hashtag management for Channels (`true` or `false`, defaults to disabled)
-`NEWSMAST_POST_HASHTAG_ENABLED` - Enable post hashtag management for Newsmast Channels (`true` or `false`, defaults to disabled)
-`PATCHWORK_HUB_URL` - To connect with Patchwork Hub for Spam Block and Content Moderation services, plus settings synchronization. API credentials are managed in the Dashboard API-key interface
+- `CHANNELS_ENABLED` - Enable custom Channels support (`true` or `false`, defaults to disabled)
+- `CHANNEL_POST_HASHTAG_ENABLED` - Enable post hashtag management for Channels (`true` or `false`, defaults to disabled)
+- `NEWSMAST_POST_HASHTAG_ENABLED` - Enable post hashtag management for Newsmast Channels (`true` or `false`, defaults to disabled)
+- `PATCHWORK_HUB_URL` - To connect with Patchwork Hub for Spam Block and Content Moderation services, plus settings synchronization. API credentials are managed in the Dashboard API-key interface
 
 ## Service Integrations
 
@@ -177,10 +177,10 @@ Aspects of this functionality is also managed by the [[newsmast_mastodon]] plugi
 
 Used for Action Mailer for admin alerts and user invites. You might look into copying these over from your Mastodon server configuration.
 
-`SMTP_SERVER` - Server address for your SMTP server
-`SMTP_PORT` - SMTP port number (defaults to `587`)
-`SMTP_LOGIN, SMTP_PASSWORD` - SMTP access credentials
-`SMTP_DOMAIN` - Domain name of the "from" email addresses
+- `SMTP_SERVER` - Server address for your SMTP server
+- `SMTP_PORT` - SMTP port number (defaults to `587`)
+- `SMTP_LOGIN, SMTP_PASSWORD` - SMTP access credentials
+- `SMTP_DOMAIN` - Domain name of the "from" email addresses
 
 ### S3-Compatible Object Storage Configuration
 

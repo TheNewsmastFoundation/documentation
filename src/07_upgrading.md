@@ -21,18 +21,17 @@ Reinstall Chewy indexes and frontend override files and rebuild assets (override
 
 ```sh
 bundle exec rails newsmast_mastodon:install
-yarn build:development  # or yarn build:production
+yarn build:production
 ```
 
-Review configuration.md for any new environment variables introduced by the update.
-Restart your Mastodon web and Sidekiq services.
+Review the [[Customizing Newsmast]] documentation to ensure you still have environment variables set as needed.
 
+Then restart your Mastodon web and Sidekiq services.
 
-
-
-
-
+## Admin Dashboard
 
 ...
 
-<!-- Keeping things up-to-date and running smoothly. -->
+<!-- TODO: this needs to be filled in -->
+
+<!-- TODO: Any maintenance tasks required? Keeping things up-to-date and running smoothly… -->

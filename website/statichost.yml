@@ -1,0 +1,6 @@
+# Docker image to use for building
+image: combos/ruby_node:3_22
+# Build command
+command: bundle install && npm install && bundle exec bridgetown deploy
+# Public directory
+public: output

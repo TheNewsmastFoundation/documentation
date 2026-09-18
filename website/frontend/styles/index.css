@@ -1,0 +1,43 @@
+/* Import the base Web Awesome stylesheet: */
+@import "@awesome.me/webawesome/dist/styles/webawesome.css";
+@import "willamette/frontend/styles/theme.css";
+@import "../fonts/gt-america.css";
+
+/** Customize Willamette theme tokens or Web Awesome tokens (or make your own!) **/
+:root {
+  --wll-color-brand: #de4000;
+
+  /* --wll-color-brand: var(--wa-color-blue-50); */
+  /* --wll-color-brand: rgb(105, 26, 184); */
+  /* --wll-layout-padding: 2rem; */
+
+  --wa-font-family-body: "GT America", sans-serif;
+  --wa-font-family-longform: "GT America", sans-serif;
+
+  --wa-font-weight-heading: 700;
+  --wll-font-weight-major-heading: 700;
+}
+
+blockquote {
+  --wa-color-text-quiet: var(--wa-color-text-normal);
+}
+
+blockquote bt-label {
+  color: var(--bt-callout-border-color);
+}
+
+blockquote.bt-callout-note {
+  --bt-callout-border-color: var(--wa-color-blue-50);
+}
+blockquote.bt-callout-tip {
+  --bt-callout-border-color: var(--wa-color-green-50);
+}
+blockquote.bt-callout-important {
+  --bt-callout-border-color: var(--wa-color-purple-50);
+}
+blockquote.bt-callout-warning {
+  --bt-callout-border-color: var(--wa-color-yellow-50);
+}
+blockquote.bt-callout-caution {
+  --bt-callout-border-color: var(--wa-color-red-50);
+}

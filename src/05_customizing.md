@@ -99,7 +99,8 @@ The custom relay timeline feature subscribes the host Mastodon instance to FediB
 
 Server-level settings such as long-post limits and local-only post availability are managed in the Newsmast Dashboard. The variables below configure optional external services used by the gem.
 
-> **Note:** Automatic ALT text generation currently supports [alttext.ai](https://alttext.ai/) only. Set `ALT_TEXT_URL` to the alttext.ai API endpoint and `ALT_TEXT_SECRET` to your alttext.ai API key.
+> [!NOTE]
+> Automatic ALT text generation currently supports [alttext.ai](https://alttext.ai/) only. Set `ALT_TEXT_URL` to the alttext.ai API endpoint and `ALT_TEXT_SECRET` to your alttext.ai API key.
 
 - `ALT_TEXT_ENABLED` - Enable/disable automatic ALT text generation (`true`/`false`)
 - `ALT_TEXT_URL` - Base URL for ALT text API service
@@ -200,4 +201,5 @@ Configure your DNS provider credentials for automatic DNS record management. Thi
 
 - `AWS_ACCESS_DNS_RESOLVE_ID, AWS_SECRET_DNS_RESOLVE_KEY, AWS_DNS_REGION` - These access credentials are provided by Route53.
 
-> Note: [[It's possible to write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.
+> [!TIP]
+> [[It's possible to write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.

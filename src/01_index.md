@@ -1,7 +1,4 @@
-# Documentation "Website"
-
-> [!IMPORTANT]
-> While still in draft, additional working commentary is embedded in HTML comments. (Look at the Markdown files directly in [Code View](01_index.md?plain=1).)
+# Newsmast Platform Features
 
 <!-- The Markdown files in this folder are intended to be structured closer to their final destination within an official docs website. -->
 

@@ -53,3 +53,24 @@ h1, aside h2 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+/* Drop headings down a size from WebAwesome defaults */
+main {
+  @media (width < 768px) {
+    h1 {
+      font-size: var(--wa-font-size-2xl);    
+    }
+  }
+
+  h2 {
+    font-size: var(--wa-font-size-xl);
+  }
+
+  h3 {
+    font-size: var(--wa-font-size-l);
+  }
+  
+  h4 {
+    font-size: calc(var(--wa-font-size-m) * 1.15);
+  }
+}

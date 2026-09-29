@@ -67,19 +67,19 @@ class APIDocsGenerator
     f.puts "#{tagged.docstring}\n\n"
 
     tagged.tags("required").each_with_index do |req_tag, index|
-      f.puts "\n### Required Parameters\n\n" if index.zero?
+      f.puts "\n{:.no_toc}\n### Required Parameters\n\n" if index.zero?
       f.puts parse_tag_text_for_yard_comment(req_tag.text)
     end
     tagged.tags("optional").each_with_index do |opt_tag, index|
-      f.puts "\n### Optional Parameters\n\n" if index.zero?
+      f.puts "\n{:.no_toc}\n### Optional Parameters\n\n" if index.zero?
       f.puts parse_tag_text_for_yard_comment(opt_tag.text)
     end
     tagged.tags("response_field").each_with_index do |opt_tag, index|
-      f.puts "\n### JSON Response Fields\n\n" if index.zero?
+      f.puts "\n{:.no_toc}\n### JSON Response Fields\n\n" if index.zero?
       f.puts parse_tag_text_for_yard_comment(opt_tag.text)
     end
     if tagged.tag("example_response")
-      f.puts "\n## Example Response\n\n"
+      f.puts "\n{:.no_toc}\n### Example Response\n\n"
       f.puts tagged.tag("example_response").text
     end
 

@@ -46,7 +46,7 @@ gem "falcon"
 
 gem "nokolexbor", "~> 0.8.0"
 
-gem "willamette", "~> 0.10.5"
+gem "willamette", "~> 0.10", codeberg: "bridgetownrb/willamette"
 
 gem "bridgetown-seo-tag", "~> 7.0"
 

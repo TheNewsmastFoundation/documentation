@@ -54,6 +54,12 @@ h1, aside h2 {
   letter-spacing: 0.02em;
 }
 
+/* Improve indentation so wrapping starts past the icon, not under it */
+#explore-menu nav li {
+  text-indent: -1.5rem;
+  margin-inline-start: 1.5rem;
+}
+
 /* Drop headings down a size from WebAwesome defaults */
 main {
   @media (width < 768px) {

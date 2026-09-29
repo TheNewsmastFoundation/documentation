@@ -38,6 +38,14 @@ GIT
       tilt (~> 2.0)
       zeitwerk (>= 2.7.3)
 
+GIT
+  remote: https://codeberg.org/bridgetownrb/willamette.git
+  revision: 942226cb44ae00d999bab3951d78b2d34326eb51
+  specs:
+    willamette (0.10.5)
+      bridgetown (>= 2.2, < 3.0)
+      nokolexbor (>= 0.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -225,9 +233,6 @@ GEM
     tilt (2.9.0)
     tsort (0.2.0)
     uri (1.1.1)
-    willamette (0.10.5)
-      bridgetown (>= 2.2, < 3.0)
-      nokolexbor (>= 0.6)
     zeitwerk (2.8.3)
 
 PLATFORMS
@@ -250,7 +255,7 @@ DEPENDENCIES
   bridgetown-seo-tag (~> 7.0)
   falcon
   nokolexbor (~> 0.8.0)
-  willamette (~> 0.10.5)
+  willamette (~> 0.10)!
 
 BUNDLED WITH
    2.7.2

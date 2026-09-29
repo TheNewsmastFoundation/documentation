@@ -13,7 +13,7 @@ node_modules
 .node_repl_history
 
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -33,10 +33,10 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore all tempfiles.
-./tmp/*
-!./tmp/.keep
+tmp/*
+!tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-./tmp/pids/*
-!./tmp/pids/
-!./tmp/pids/.keep
+tmp/pids/*
+!tmp/pids/
+!tmp/pids/.keep

@@ -5,7 +5,8 @@
 
 /** Customize Willamette theme tokens or Web Awesome tokens (or make your own!) **/
 :root {
-  --wll-color-brand: #de4000;
+  --newsmast-logo-color: #E33D26;
+  --wll-color-brand: var(--newsmast-logo-color);
 
   /* --wll-color-brand: var(--wa-color-blue-50); */
   /* --wll-color-brand: rgb(105, 26, 184); */
@@ -16,6 +17,12 @@
 
   --wa-font-weight-heading: 700;
   --wll-font-weight-major-heading: 700;
+}
+.wa-dark {
+  /* --wll-color-brand: #9d6159; */
+  --wll-color-brand: #c08880;
+  --wa-color-text-link: color-mix(in oklab, var(--newsmast-logo-color), var(--wa-color-orange-80) 25%);
+  --wa-color-brand-fill-loud: var(--newsmast-logo-color);
 }
 
 blockquote {
@@ -40,4 +47,9 @@ blockquote.bt-callout-warning {
 }
 blockquote.bt-callout-caution {
   --bt-callout-border-color: var(--wa-color-red-50);
+}
+
+h1, aside h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }

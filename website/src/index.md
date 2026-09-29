@@ -4,7 +4,8 @@
 layout: default
 ---
 
-# Learn about Newsmast Foundation's Open Source Platform
+# Learn about Newsmast Foundation's <em style="color: var(--newsmast-logo-color); font-style: normal">Open Source Platform</em>
+{:style="color:var(--wa-color-text-normal)"}
 
 The [Newsmast Foundation](https://newsmastfoundation.org) helps mission-driven organisations move their communities to a custom, directly-managed platform.
 

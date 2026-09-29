@@ -5,7 +5,11 @@
 
   <a slot="logo" href="/">
     <% if strategy.logo? %>
-      <img src="<%= strategy.logo %>" alt="<%= strategy.logo_alt %>" />
+      <picture>
+        <source srcset="<%= strategy.logo %>" media="(prefers-color-scheme: light)" />
+        <source srcset="<%= strategy.logo.sub('.svg', '_dark.svg') %>" media="(prefers-color-scheme: dark)" />
+        <img src="<%= strategy.logo %>" alt="<%= strategy.logo_alt %>" />
+      </picture>
     <% end %>
     <% if strategy.site_title? %>
       <span><%= strategy.site_title %></span>

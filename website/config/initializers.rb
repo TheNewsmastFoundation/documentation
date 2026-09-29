@@ -129,4 +129,6 @@ Bridgetown.configure do |config|
       docs "../src"
     end
   end
+  init :"bridgetown-seo-tag" 
+  init :"bridgetown-feed" 
 end

@@ -52,6 +52,7 @@ blockquote.bt-callout-caution {
 h1, aside h2 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
 /* Improve indentation so wrapping starts past the icon, not under it */
@@ -78,5 +79,17 @@ main {
   
   h4 {
     font-size: calc(var(--wa-font-size-m) * 1.15);
+  }
+}
+
+nav > ul, ul[slot="nav"], aside[slot="sidebar-end"] ul {
+  & > li {
+    & > a {
+      border-radius: 4px;
+
+      &.scrolled-in-view {
+        background: color-mix(in oklab, var(--wa-color-text-link), var(--wll-main-background) 88%);
+      }
+    }
   }
 }

@@ -43,6 +43,7 @@ class APIDocsGenerator
 
       # Get the repo-specific preamble from calling script
       yield f
+      f.puts "\n<%= toc %>"
       f.puts
 
       # Loop through the tagged methods and produce the block of Markdown for that

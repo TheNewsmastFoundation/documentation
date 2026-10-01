@@ -1,5 +1,7 @@
 # Setup: Installation Instructions
 
+<%= toc %>
+
 If you've read our initial setup explainer and prerequisites, great! You're now ready to install and set up Newsmast, starting with the plugin gem.
 
 ## Installing the Plugin

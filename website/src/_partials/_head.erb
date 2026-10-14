@@ -1,0 +1,14 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<%= seo %>
+<style>
+<%= Bridgetown::Utils::Callouts::DefaultCallout::STYLESHEET %>
+</style>
+
+<!-- hat tip: https://stackoverflow.com/a/227238 -->
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="stylesheet" href="<%= asset_path :css %>" />
+<script src="<%= asset_path :js %>" defer></script>
+<%= feed_meta %>
+<%= live_reload_dev_js %>

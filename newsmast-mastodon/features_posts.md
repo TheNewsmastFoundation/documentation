@@ -1,5 +1,8 @@
 # Newsmast Mastodon Plugin Posts Features
-  ## Post Management
+
+> **Newsmast Dashboard integration:** The Dashboard is **Required** for Dashboard-managed character limit, local-only post, community channel, and boost bot configuration via the **shared database**. The gem or host Mastodon owns the matching runtime behavior. Drafts, scheduled and quote posts, reactions, link previews, and notification enhancements are **Not required** to use the Dashboard. See [Dashboard server settings](../newsmast-dashboard/features_server_settings.md) and [channels](../newsmast-dashboard/features_channels.md).
+
+## Post Management
 - **Custom Character Limits**: Configure custom character limits per instance through server settings (default: 500 characters)
 - **Draft Status Management**: Create, update, publish, and delete draft posts with full API support
 - **Scheduled Posts**: Extended scheduled status management with custom parameters
@@ -20,12 +23,17 @@
 
 ### Automation & Integration
 - **Post Boosting**: Automatic post boosting to external instances with worker support
+- **Custom Boost Bots**: Add or remove statuses to/from per-account custom boost bot instances
 - **Relay Management**: Create and delete relay connections for federated content
 - **Custom Timeline Filtering**: Extended account status filtering with multiple exclusion options
-- **Boost Channel Management**: Special handling for boost bot accounts
+- **Boost Channel Management**: Special handling for boost bot accounts configured for Newsmast Dashboard communities
+
+### Engagement
+- **Custom Status Reactions**: Emoji reactions on statuses, stored per account with add/update and remove support
+- **Local-Only Posts**: Per-account setting controlling whether posts are kept local to the instance; server-level availability is managed in the Newsmast Dashboard
 
 ### Server Configuration
-- **Flexible Server Settings**: Hierarchical server settings with parent-child relationships
+- **Flexible Server Settings**: Hierarchical server settings managed in the Newsmast Dashboard and consumed by the gem
 - **Environment-Based Toggles**: Feature flags for ALT text generation, post boosting, and user toggles
 - **Instance Serialization**: Extended instance metadata with custom configuration exposure
 
@@ -46,7 +54,31 @@ POST   /api/v1/drafted_statuses/:id/publish # Publish a draft as a status
 GET    /api/v1/utilities/link_preview     # Generate link preview for a URL
 ```
 
+### Status Reactions
+```
+PUT    /api/v1/patchwork/statuses/:status_id/reactions/:id  # Add or update a reaction on a status
+DELETE /api/v1/patchwork/statuses/:status_id/reactions/:id  # Remove a reaction from a status
+```
+
+`:id` is the reaction identifier (for example, the emoji shortcode or name being applied).
+
+### Custom Boost Bots
+```
+POST   /api/v1/custom_statuses/add_custom_boost_bot_status     # Add a status to a custom boost bot
+POST   /api/v1/custom_statuses/remove_custom_boost_bot_status  # Remove a status from a custom boost bot
+```
+
+Custom boost bots are configured with `{USERNAME}_INSTANCE_URL`, `{USERNAME}_CLIENT_ID`, and `{USERNAME}_CLIENT_SECRET` environment variables (replace `{USERNAME}` with the bot username in uppercase). See the gem's [environment variables reference](https://github.com/TheNewsmastFoundation/newsmast-mastodon/blob/main/docs/configuration/environment-variables.md#custom-boost-bot).
+
+### Local-Only Posts
+```
+GET    /api/v1/local_only_posts/getLocalOnlySetting  # Get the account's local-only post setting
+```
+
+To expose the Local-Only Posts compose/status UI in a host Mastodon app, run `bundle exec rails newsmast_mastodon:install` so the frontend/view override files are copied into the host instance, then rebuild assets (`yarn build:development` or `yarn build:production`). See [Installation](README.md#installation).
+
 ### Relay Management
 ```
 POST   /api/v1/patchwork/relays           # Create a new relay connection
 DELETE /api/v1/patchwork/relays/:id       # Remove a relay connection
+```

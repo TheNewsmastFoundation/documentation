@@ -2,10 +2,12 @@
 
 To configure Accounts Management settings, see [https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management)
 
+> **Newsmast Dashboard integration:** Dashboard support is **Required** for Dashboard-managed community-admin data, server-wide search and Bluesky defaults, and mail branding, using the **shared database** and supported host behavior. Account APIs, password/email flows, notifications, and self-service deletion are otherwise provided by the gem or Mastodon and do **not** require the Dashboard. See [Dashboard administration](../newsmast-dashboard/features_administration.md) and [server settings](../newsmast-dashboard/features_server_settings.md).
+
 ### Account Management
-- **Custom Account Creation**: Enhanced account creation with community admin integration
+- **Custom Account Creation**: Enhanced account creation with Newsmast Dashboard-managed community admin integration
 - **Auto-Follow**: Automatically follow default accounts on signup (configurable via `AUTO_FOLLOW_ACCOUNTS` env var)
-- **Server Settings**: Automatic search opt-in/opt-out and Bluesky bridge configuration for new users
+- **Server Settings**: Automatic search opt-in/opt-out and Bluesky bridge configuration for new users, managed in the Newsmast Dashboard
 - **Extended Credentials**: Account credentials API includes email in response
 
 ### Push Notifications
@@ -31,6 +33,14 @@ To configure Accounts Management settings, see [https://github.com/TheNewsmastFo
 - **Email Notification Settings**: Toggle all email notifications on/off
 - **Alt-Text Settings**: User preference for alt-text reminders on media uploads
 - **Locale Management**: API endpoint for setting user language preference
+- **Article Notifications**: Opt in/out of new article notifications, including Leicester news notifications
+
+### Account Deletion
+- **Self-Service Deletion**: Authenticated users can request deletion of their own account
+
+### Conversations
+- **Conversation Status**: Check whether a conversation exists for the account
+- **Bulk Read**: Mark all conversations as read in a single request
 
 ### Internationalization (i18n)
 - **11 Supported Languages**: English, German, Spanish, French, Italian, Japanese, Portuguese, Brazilian Portuguese, Russian, and Welsh
@@ -39,7 +49,7 @@ To configure Accounts Management settings, see [https://github.com/TheNewsmastFo
 
 ### Mailer Customization
 - **Branded Templates**: Customizable email templates with logo and brand colors
-- **Dynamic Branding**: Support for custom mail header/footer logos via `SiteUpload`
+- **Dynamic Branding**: Support for mail header/footer logos managed in the Newsmast Dashboard via `SiteUpload`
 - **App Store Links**: Configurable iOS and Android app store links in emails
 
 ### Database Extensions
@@ -69,6 +79,11 @@ POST /api/v1/custom_passwords/change_password
 POST /api/v1/custom_passwords/change_email
 ```
 
+### Authentication
+```
+POST /api/v1/custom_passwords/bristol_cable_sign_in  # Bristol Cable membership sign-in
+```
+
 ### User Settings
 ```
 GET  /api/v1/patchwork/email_settings
@@ -76,4 +91,24 @@ POST /api/v1/patchwork/email_settings/notification
 GET  /api/v1/patchwork/alttext_settings
 POST /api/v1/patchwork/alttext_settings/alttext
 POST /api/v1/user_locales
+```
+
+### Article Notifications
+```
+GET  /api/v1/accounts/article_notifications          # Get article notification preference
+POST /api/v1/accounts/article_notifications          # Update article notification preference
+GET  /api/v1/accounts/leicester_notification         # Get Leicester news notification preference
+POST /api/v1/accounts/leicester_notification         # Update Leicester news notification preference
+```
+
+### Account Deletion
+```
+POST   /api/v1/delete_account                        # Request deletion of the authenticated account
+DELETE /api/v1/patchwork/account_deletion/:id        # Delete an account
+```
+
+### Conversations
+```
+GET  /api/v1/patchwork/conversations/check_conversation  # Check whether a conversation exists
+POST /api/v1/patchwork/conversations/read_all            # Mark all conversations as read
 ```

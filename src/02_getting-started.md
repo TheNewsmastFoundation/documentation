@@ -17,3 +17,5 @@ The `newsmast-dashboard` codebase is a standalone Ruby on Rails application for 
 There are also some setting synchronization features available when you activate Patchwork Hub for the dashboard, as well as pulling in content moderation filters.
 
 <!-- Q: do we have a link anywhere to what the Patchwork Hub is and how that works? -->
+<!-- A: Patchwork Hub is an optional external service for synchronization of selected settings and filters. We will add the updated live link here as soon as our DevOps team completes the domain setup.
+ -->

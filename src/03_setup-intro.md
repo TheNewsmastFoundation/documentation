@@ -20,6 +20,8 @@ You will need to know how to set up your web server (Caddy, nginx, Apache, etc.)
 
 <!-- Q: Does the dashboard need to be "public"? Or can it live behind a private network / VPN / whatever? -->
 
+<!-- A:  Yes, it can be hosted behind a private network / VPN / whatever -->
+
 ## Third-Party Integrations
 
 Other than required integrations such as email sending, these integrations help support various features you may want to enable for your community.

@@ -112,6 +112,13 @@ Server-level settings such as long-post limits and local-only post availability 
 
 <!-- Q: What is the boost service? And how is this different form BOOST_BOT stuff above? -->
 
+<!-- A:
+    ### Reblogging and boosting
+    - **Channel reblogging:** after a status passes content filters, `MAIN_CHANNEL` or `BOOST_BOT_ENABLED` triggers reblogging by channel accounts (via `REBLOG_*` variables). Post URLs use `LOCAL_DOMAIN`.
+
+    - **Boost service:** when `BOOST_POST_ENABLED` is set, the `BOOST_POST_*` variables send posts to a remote boost API.
+-->
+
 - `BOOST_POST_ENABLED` - Enable/disable automatic post boosting (`true`/`false`)
 - `BOOST_POST_INSTANCE_URL` - Target instance URL for boosting posts
 - `BOOST_POST_API_KEY` - API key for boost service authentication

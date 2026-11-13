@@ -18,9 +18,8 @@ You can install & deploy the Newsmast Dashboard directly from source or using Do
 
 You will need to know how to set up your web server (Caddy, nginx, Apache, etc.) in order to expose the application via a reverse proxy and domain you're able to access from a browser.
 
-<!-- Q: Does the dashboard need to be "public"? Or can it live behind a private network / VPN / whatever? -->
-
-<!-- A:  Yes, it can be hosted behind a private network / VPN / whatever -->
+> [!TIP]
+> For additional security, you might decide to restrict access to the dashboard by keeping it within a private network. That could be combined with using VPN software or a system like Tailscale so it's inaccessible to anyone on the public internet.
 
 ## Third-Party Integrations
 

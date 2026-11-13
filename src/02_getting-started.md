@@ -14,8 +14,7 @@ Since Mastodon doesn't have an official plugin API, the gem modifies Mastodon at
 
 The `newsmast-dashboard` codebase is a standalone Ruby on Rails application for administrators, running independently of its connected Mastodon instance. It does access the instance database, however, and stores additional content there as well as communicates with the instance through Mastodon's API (which has been extended by `newsmast_mastodon`).
 
-There are also some setting synchronization features available when you activate Patchwork Hub for the dashboard, as well as pulling in content moderation filters.
+If you're an organization which intends to manage multiple Mastodon/Dashboard instances, you can choose to activate Patchwork Hub, which is an optional external services for synchronization of selected settings and content moderation filters.
 
-<!-- Q: do we have a link anywhere to what the Patchwork Hub is and how that works? -->
-<!-- A: Patchwork Hub is an optional external service for synchronization of selected settings and filters. We will add the updated live link here as soon as our DevOps team completes the domain setup.
+<!-- TODO: add the updated live link here as soon as our DevOps team completes the domain setup.
  -->

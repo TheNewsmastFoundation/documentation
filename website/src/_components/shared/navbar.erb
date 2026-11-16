@@ -1,0 +1,24 @@
+<header slot="header">
+  <%= dsd do %>
+    <%= render Willamette::HeaderNavbar.new %>
+  <% end %>
+
+  <a slot="logo" href="/">
+    <% if strategy.logo? %>
+      <picture>
+        <source srcset="<%= strategy.logo %>" media="(prefers-color-scheme: light)" />
+        <source srcset="<%= strategy.logo.sub('.svg', '_dark.svg') %>" media="(prefers-color-scheme: dark)" />
+        <img src="<%= strategy.logo %>" alt="<%= strategy.logo_alt %>" />
+      </picture>
+    <% end %>
+    <% if strategy.site_title? %>
+      <span><%= strategy.site_title %></span>
+    <% end %>
+  </a>
+
+  <% if strategy.search? %>
+    <a href="<%= relative_url '/search' %>" slot="search"><wa-icon label="<%= t "labels.search" %>" name="search"></wa-icon> <span class="hide-for-mobile"><%= t "labels.search" %> <kbd style="vertical-align: 10%">⌘K</kbd></span></a>
+  <% end %>
+
+  <%= strategy.nav_links %>
+</header>

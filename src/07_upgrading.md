@@ -8,7 +8,7 @@ When you upgrade your Mastodon instance, you'll also need to ensure you've selec
 gem "newsmast_mastodon", "X.Y.Z.N"
 ```
 
-(See [[VERSIONS]] for the latest gem release matching the Mastodon version.)
+(See the [releases](https://github.com/TheNewsmastFoundation/newsmast-mastodon/releases) for the latest gem release matching the Mastodon version.)
 
 Then install the update and any new database migrations:
 

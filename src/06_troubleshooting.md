@@ -4,7 +4,7 @@ There are a number of categories of issues you may run into with setting up the 
 
 ## Plugin Gem Setup Fails
 
-If you're running into any difficulties installing the plugin gem, double-check that you've met the [[version prerequisites]]. There could be a mismatch with the Ruby version being run and what we currently support (run `ruby -v` to verify). Also ensure you are running the correct gem version with compatibility for the Mastodon version.
+If you're running into any difficulties installing the plugin gem, double-check that you've met the [version prerequisites](/docs/setup-intro/#plugin-prerequisites-and-compatibility). There could be a mismatch with the Ruby version being run and what we currently support (run `ruby -v` to verify). Also ensure you are running the correct gem version with compatibility for the Mastodon version.
 
 If you need to upgrade to newer versions of some part of your tech stack, we recommend upgrading to the nearest higher version to minimize possible disruptions. If that goes well, you can decide to move forward a version once more (and so on) until you've reached your desired target.
 
@@ -12,7 +12,7 @@ If you need to upgrade to newer versions of some part of your tech stack, we rec
 
 First, try to determine where the problem lies. Does it seem like the crash logs indicate a problem within the Mastodon codebase, or in the gem codebase? You could see if commenting out the entry in `Gemfile`, running `bundle install`, and booting Mastodon gets it working again as a baseline assumption. Or maybe something else is going on with regard to your server environment.
 
-It's possible you may have missed setting up certain environment variables required for your setup, or perhaps there's a ENV var that got set incorrectly. Take a look through [[Customizing]] and make sure you've entered in everything you need correctly.
+It's possible you may have missed setting up certain environment variables required for your setup, or perhaps there's a ENV var that got set incorrectly. Take a look through [[Customizing Newsmast]] and make sure you've entered in everything you need correctly.
 
 ## Mastodon Instance Randomly Causes Runtime Errors
 
@@ -51,4 +51,4 @@ Also bear in mind there are a lot of moving parts when it comes to bridged Blues
 
 ----
 
-If you are still running into issues with installing or operating the plugin gem or dashboard, learn how to find answers via our [[Support]] page.
+If you are still running into issues with installing or operating the plugin gem or dashboard, learn how to find answers via our [[Support & Contributing]] page.

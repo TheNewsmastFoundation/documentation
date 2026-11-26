@@ -15,7 +15,6 @@ module Shared
         site_title: nil,
         nav_links: [
           Willamette.link(title: t("nav.docs"), url: "/docs"),
-          Willamette.link(title: t("nav.blog"), url: "/blog"),
         ]
       )
     end
@@ -38,7 +37,6 @@ module Shared
         description: metadata.description,
         explore_links:,
         follow_links: [
-          Willamette.link(icon: "rss", title: "Newsfeed", url: "/feed.xml"),
           Willamette.link(icon: "mastodon", icon_family: "brands", title: "Mastodon", url: "https://newsmast.social/@newsmast"),
           Willamette.link(icon: "bluesky", icon_family: "brands", title: "Bluesky", url: "https://bsky.app/profile/newsmastfoundation.org"),
         ],

@@ -25,14 +25,14 @@ Welcome to your new Bridgetown website! You can update this README file to provi
 ## Install
 
 ```sh
-cd bridgetown-site-folder
+cd website
 bundle install && npm install
 ```
 > Learn more: [Bridgetown Getting Started Documentation](https://www.bridgetownrb.com/docs/).
 
 ## Development
 
-To start your site in development mode, run `bin/bridgetown start` and navigate to [localhost:4000](https://localhost:4000/)!
+To start your site in development mode, run `bin/bridgetown start` and navigate to [localhost:4000](http://localhost:4000/)!
 
 Check out [plugins](https://www.bridgetownrb.com/plugins/) if you're looking to add functionality or a theme to your site.
 

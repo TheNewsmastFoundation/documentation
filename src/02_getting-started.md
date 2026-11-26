@@ -2,7 +2,7 @@
 
 If you administrate one or more Mastodon instances at the _host_ level (meaning you have direct command line access to the installation of Mastodon and it's not controlled by a managed hosting provider), you can set up Newsmast.
 
-Continuing reading for an overview of what you need to know to install Newsmast successfully. Additional low-level configuration and API details are provided for when you need to go deeper.
+Continue reading for an overview of what you need to know to install Newsmast successfully. Additional low-level configuration and API details are provided for when you need to go deeper.
 
 ## How the Plugin Works
 

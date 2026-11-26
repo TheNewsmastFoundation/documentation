@@ -12,7 +12,7 @@ If you've read our initial setup explainer and prerequisites, great! You're now 
 gem "newsmast_mastodon", "X.Y.Z.N"
 ```
 
-You can run `cat lib/mastodon/version.rb` to see what the major/minor/patch values are, and then choose the latest gem patch as indicated in our [[Releases]].
+You can run `cat lib/mastodon/version.rb` to see what the major/minor/patch values are, and then choose the latest gem patch as indicated in our [releases](https://github.com/TheNewsmastFoundation/newsmast-mastodon/releases).
 
 2. Install the gem by running:
 
@@ -40,7 +40,7 @@ yarn build:production  # or yarn build:development if you're just testing
 
 Now restart the Mastodon instance (both the web server and the Sidekiq background service), and verify that it boots successfully. If there's any detected mismatch between the Mastodon version and the gem version match, you'll see an error logged to the console. <!-- Does it outright crash or is it just a warning? -->
 
-As an additional step, have a look at the [[Customizing]] section to see what environment variables you can set to modify the behavior of the plugin or add integrations with other services.
+As an additional step, have a look at the [[Customizing Newsmast]] section to see what environment variables you can set to modify the behavior of the plugin or add integrations with other services.
 
 <!-- from temp docs: "Commit the copied host-app files as part of your Mastodon instance changes." Hmm, we probably need a better strategy here? Maybe create a separate branch first? -->
 
@@ -103,6 +103,7 @@ docker compose exec app bundle exec rails db:seed
 
 ```sh
 git clone https://github.com/TheNewsmastFoundation/newsmast-dashboard.git
+cd newsmast-dashboard
 cp .env.sample .env
 $EDITOR .env
 ```
@@ -114,7 +115,7 @@ bin/setup
 bundle exec rails server
 ```
 
-<!-- TODO: the bin/setup script sees to be missing some stuff, specifically building frontend assets, and I'm not sure it should end with the bin/rails restart either -->
+<!-- TODO: the bin/setup script seems to be missing some stuff, specifically building frontend assets, and I'm not sure it should end with the bin/rails restart either -->
 
 3. Log into the dashboard with your admin credentials (as specified in `.env`).
 
@@ -122,4 +123,4 @@ bundle exec rails server
 
 <!-- TODO: further setup notes like setting up a reverse proxy, file permissions, etc. -->
 
-If you need to upgrade in the future, [[read the guide here]].
+If you need to upgrade in the future, [read the upgrading guide](/docs/upgrading/).

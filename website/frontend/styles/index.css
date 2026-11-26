@@ -1,7 +1,6 @@
 /* Import the base Web Awesome stylesheet: */
 @import "@awesome.me/webawesome/dist/styles/webawesome.css";
 @import "willamette/frontend/styles/theme.css";
-@import "../fonts/gt-america.css";
 
 /** Customize Willamette theme tokens or Web Awesome tokens (or make your own!) **/
 :root {
@@ -12,8 +11,8 @@
   /* --wll-color-brand: rgb(105, 26, 184); */
   /* --wll-layout-padding: 2rem; */
 
-  --wa-font-family-body: "GT America", sans-serif;
-  --wa-font-family-longform: "GT America", sans-serif;
+  --wa-font-family-body: system-ui, sans-serif;
+  --wa-font-family-longform: system-ui, sans-serif;
 
   --wa-font-weight-heading: 700;
   --wll-font-weight-major-heading: 700;

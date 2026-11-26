@@ -1,52 +1,47 @@
-# Newsmast Mastodon Plugin Posts Features
-  ## Post Management
-- **Custom Character Limits**: Configure custom character limits per instance through server settings (default: 500 characters)
-- **Draft Status Management**: Create, update, publish, and delete draft posts with full API support
-- **Scheduled Posts**: Extended scheduled status management with custom parameters
-- **Quote Posts**: Support for quoting other posts with visibility inheritance
-- **Reply Threading**: Enhanced reply management with thread validation
+# Posts
 
-### Media & Content Enhancement
-- **Automatic ALT Text Generation**: AI-powered automatic ALT text generation for images using external API integration
-- **Link Preview Generation**: Automatic link thumbnail generation with customizable metadata extraction
-- **Media Attachment Management**: Support for multiple image formats (JPEG, PNG, GIF, WebP, BMP) with validation
-- **Draft Media Association**: Media attachments can be associated with draft statuses
+## Drafts
 
-### Notification Enhancements
-- **Direct Mention Filtering**: Filter notifications to show only direct mentions
-- **Private Mention Exclusion**: Option to exclude private/direct mentions from notification lists
-- **Grouped Notifications**: Enhanced notification grouping with custom type support
-- **Extended Notification API**: V1 and V2 API enhancements for better filtering
+Drafts are stored server-side (`patchwork_drafted_statuses`). Limits per account: 300 drafts in total and 25 created per day.
 
-### Automation & Integration
-- **Post Boosting**: Automatic post boosting to external instances with worker support
-- **Relay Management**: Create and delete relay connections for federated content
-- **Custom Timeline Filtering**: Extended account status filtering with multiple exclusion options
-- **Boost Channel Management**: Special handling for boost bot accounts
+| Method | Path | Purpose |
+| --- | --- | --- |
+| POST | `/drafted_statuses` | Create a draft. Takes the same params as a status. |
+| GET | `/drafted_statuses` | List drafts, grouped by date, paginated. |
+| GET | `/drafted_statuses/:id` | Show a draft. |
+| PATCH/PUT | `/drafted_statuses/:id` | Replace a draft. |
+| DELETE | `/drafted_statuses/:id` | Delete a draft. |
+| POST | `/drafted_statuses/:id/publish` | Delete the draft and post it (or schedule it, if `scheduled_at` is set). |
 
-### Server Configuration
-- **Flexible Server Settings**: Hierarchical server settings with parent-child relationships
-- **Environment-Based Toggles**: Feature flags for ALT text generation, post boosting, and user toggles
-- **Instance Serialization**: Extended instance metadata with custom configuration exposure
+Reading needs `read:statuses`; writing needs `write:statuses`. Media attached to a draft is kept for publishing.
 
-## API Endpoints
+## Long posts
 
-### Draft Management
-```
-POST   /api/v1/drafted_statuses           # Create a new draft
-GET    /api/v1/drafted_statuses           # List all drafts (grouped by date)
-GET    /api/v1/drafted_statuses/:id       # Show a specific draft
-PUT    /api/v1/drafted_statuses/:id       # Update a draft
-DELETE /api/v1/drafted_statuses/:id       # Delete a draft
-POST   /api/v1/drafted_statuses/:id/publish # Publish a draft as a status
-```
+If the Dashboard setting `Long posts` is on, its value replaces Mastodon's 500-character limit. The new limit is enforced when posting and is reported to clients in `configuration.statuses.max_characters` of the instance API (v1 and v2). Invalid or missing values fall back to 500.
 
-### Utilities
-```
-GET    /api/v1/utilities/link_preview     # Generate link preview for a URL
-```
+## Local-only posts
 
-### Relay Management
-```
-POST   /api/v1/patchwork/relays           # Create a new relay connection
-DELETE /api/v1/patchwork/relays/:id       # Remove a relay connection
+`POST /api/v1/statuses` accepts `local_only`. Local-only posts are not federated. Replies inherit the parent's value when the client does not set one, and boosts copy the original's. Clients check whether the feature is on with `GET /api/v1/local_only_posts/getLocalOnlySetting`, which returns `{ "local_only": true|false }`.
+
+## Reactions
+
+Emoji reactions, one per user per status:
+
+- `PUT /api/v1/patchwork/statuses/:status_id/reactions/:emoji`: set or change your reaction.
+- `DELETE /api/v1/patchwork/statuses/:status_id/reactions/:emoji`: remove it.
+
+Allowed emoji come from `PATCHWORK_STATUS_REACTION_NAMES` (default `👍,❤️,😂,😮,😠`), with at most `PATCHWORK_STATUS_REACTION_EMOJI_LIMIT` (default 5). Timelines, status and context responses include `patchwork_post_reactions`.
+
+## Link previews
+
+`GET /api/v1/utilities/link_preview?url=...` returns metadata for a URL. Errors: `400` for a missing or invalid URL, `422` if fetching fails.
+
+## Alt text
+
+When `ALT_TEXT_ENABLED=true`, alt text is generated for images on local posts through [alttext.ai](https://alttext.ai/) (`ALT_TEXT_URL`, `ALT_TEXT_SECRET`). Users opt in with the alt text setting unless `SKIP_ALT_TEXT_USER_SETTING=true`.
+
+## Reblogging and boosting
+
+- **Channel reblogging:** after a status passes content filters, `MAIN_CHANNEL` or `BOOST_BOT_ENABLED` triggers reblogging by channel accounts (`REBLOG_*` variables). Post URLs use `LOCAL_DOMAIN`.
+- **Boost service:** `BOOST_POST_ENABLED` and `BOOST_POST_*` send posts to a remote boost API.
+- **Custom boost bots:** `{USERNAME}_INSTANCE_URL`, `{USERNAME}_CLIENT_ID` and `{USERNAME}_CLIENT_SECRET` configure a named bot account.

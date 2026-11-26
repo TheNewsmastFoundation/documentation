@@ -1,79 +1,68 @@
-## Newsmast Mastodon Plugin Account Management Features
+# Accounts
 
-To configure Accounts Management settings, see [https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management](https://github.com/TheNewsmastFoundation/documentation/blob/main/newsmast-mastodon/configuration.md#accounts-management)
+Endpoints live under `/api/v1`. Unless noted, they need an OAuth token with `read write` scopes and a signed-in user.
 
-### Account Management
-- **Custom Account Creation**: Enhanced account creation with community admin integration
-- **Auto-Follow**: Automatically follow default accounts on signup (configurable via `AUTO_FOLLOW_ACCOUNTS` env var)
-- **Server Settings**: Automatic search opt-in/opt-out and Bluesky bridge configuration for new users
-- **Extended Credentials**: Account credentials API includes email in response
+## Sign-up
 
-### Push Notifications
-- **Firebase Cloud Messaging (FCM)**: Full integration for iOS and Android push notifications
-- **Token Management**: Create, revoke, and manage notification tokens per device
-- **Mute Control**: Per-account mute status for notifications
-- **Multi-Platform Support**: Support for iOS, Android, and Huawei devices
-- **Rich Notifications**: Custom notifications for follows, mentions, reblogs, favourites, polls, and quotes
+`POST /api/v1/accounts` is extended so that:
 
-### Password & Email Management
-- **OTP-Based Password Reset**: Secure 4-digit OTP verification for password reset
-- **Password Change**: Authenticated password change with current password verification
-- **Email Change**: OTP-verified email change with session revocation
-- **Custom Mailers**: Branded OTP confirmation emails
+- the `reason` defaults to `Signing up via <LOCAL_DOMAIN> App` when empty;
+- a 4-digit OTP is generated and emailed to the new user right after creation;
+- sign-up is rejected unless the email domain is listed in `ALLOWED_SIGNUP_EMAIL_DOMAIN` (comma-separated; all domains are allowed when unset).
 
-### Authentication
-- **Custom OAuth Behavior**: Platform-specific authentication handling
-- **Bristol Cable Integration**: External membership service authentication
-- **Channel-Based Login**: Role-based login restrictions for channel platforms
-- **Doorkeeper Extensions**: Password grant flow with LDAP/PAM support
+After a user is approved (`prepare_new_user!`):
 
-### User Preferences
-- **Email Notification Settings**: Toggle all email notifications on/off
-- **Alt-Text Settings**: User preference for alt-text reminders on media uploads
-- **Locale Management**: API endpoint for setting user language preference
+1. **Auto-follow:** accounts are followed from the Dashboard auto-follow list for this instance if one exists (an enabled list wins; a disabled list turns auto-follow off). Otherwise the env fallback applies when `AUTO_FOLLOW_ENABLED=true`, using `AUTO_FOLLOW_ACCOUNTS`.
+2. A welcome email is queued after one hour, unless `WELCOME_EMAIL_DISABLED=true`.
+3. If `DEFAULT_EMAIL_NOTIFICATIONS_ENABLED` is set, all `notification_emails.*` settings start as `true` or `false` accordingly.
+4. If the Dashboard setting `Automatic Search Opt-out` is on, the account is created non-discoverable and non-indexable.
 
-### Internationalization (i18n)
-- **11 Supported Languages**: English, German, Spanish, French, Italian, Japanese, Portuguese, Brazilian Portuguese, Russian, and Welsh
-- **Standardized API Responses**: Consistent, translatable error and success messages
-- **Locale-Aware Responses**: API responses respect user's locale preference
+`PATCH /api/v1/accounts/update_credentials` also redistributes the profile update to followers.
 
-### Mailer Customization
-- **Branded Templates**: Customizable email templates with logo and brand colors
-- **Dynamic Branding**: Support for custom mail header/footer logos via `SiteUpload`
-- **App Store Links**: Configurable iOS and Android app store links in emails
+## Password and email
 
-### Database Extensions
-- Server settings management
-- Notification tokens storage
-- Drafted statuses support
-- User alt-text preferences
+| Method | Path | Purpose |
+| --- | --- | --- |
+| POST | `/custom_passwords` | Start a password reset for an email: stores a reset token and OTP, emails the OTP. |
+| GET | `/custom_passwords/request_otp` | Send a fresh OTP. |
+| POST | `/custom_passwords/verify_otp` | Verify the OTP (also confirms the user, or completes an email change) and return an access token. |
+| PATCH/PUT | `/custom_passwords/:id` | Set a new password with `password` and `password_confirmation`, after the OTP is verified. |
+| POST | `/custom_passwords/change_password` | Authenticated change; needs `current_password`. |
+| POST | `/custom_passwords/change_email` | Authenticated email change; confirmed via OTP. |
 
-## API Endpoints
+The first four endpoints do not require authentication.
 
-### Notification Tokens
-```
-POST   /api/v1/notification_tokens              # Create token
-POST   /api/v1/notification_tokens/revoke_token # Revoke token
-POST   /api/v1/notification_tokens/update_mute  # Update mute status
-GET    /api/v1/notification_tokens/get_mute_status
-DELETE /api/v1/notification_tokens/reset_device_tokens/:platform_type
-```
+## Notification tokens
 
-### Password Management
-```
-POST /api/v1/custom_passwords           # Request password reset
-PUT  /api/v1/custom_passwords/:id       # Update password
-GET  /api/v1/custom_passwords/request_otp
-POST /api/v1/custom_passwords/verify_otp
-POST /api/v1/custom_passwords/change_password
-POST /api/v1/custom_passwords/change_email
-```
+Device tokens for Firebase push (`FIREBASE_PROJECT_ID`, `FIREBASE_KEY_FILE_NAME`).
 
-### User Settings
-```
-GET  /api/v1/patchwork/email_settings
-POST /api/v1/patchwork/email_settings/notification
-GET  /api/v1/patchwork/alttext_settings
-POST /api/v1/patchwork/alttext_settings/alttext
-POST /api/v1/user_locales
-```
+| Method | Path | Purpose |
+| --- | --- | --- |
+| POST | `/notification_tokens` | Register `notification_token` and `platform_type`. |
+| POST | `/notification_tokens/revoke_token` | Remove one token. |
+| POST | `/notification_tokens/update_mute` | Set `mute` on all of the user's tokens. |
+| GET | `/notification_tokens/get_mute_status` | Read the mute flag. |
+| DELETE | `/notification_tokens/reset_device_tokens/:platform_type` | Remove all tokens for a platform. |
+
+## Cross-instance push
+
+`POST /api/v1/cross_instance_push` accepts push requests from a trusted partner instance. Requests must carry an `X-Signature` header of the form `t=<unix time>, sha256=<hmac>`, signed with `CROSS_INSTANCE_PUSH_SECRET`; timestamps older than 300 seconds are rejected. Body: `username`, `title` (1–255 chars), `body` (1–1000 chars), optional `data` (up to 10 keys, values up to 500 chars). Valid requests return `202` and are delivered by a Sidekiq worker. Outbound sending is on only when both `CROSS_INSTANCE_PUSH_TARGET_URL` and the secret are set.
+
+## Settings
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| POST | `/user_locales` | Save the user's locale (`lang`); `400` if unavailable. |
+| GET / POST | `/patchwork/email_settings`, `/patchwork/email_settings/notification` | Read or toggle all email notifications at once (`allowed`). |
+| GET / POST | `/patchwork/alttext_settings`, `/patchwork/alttext_settings/alttext` | Read or set automatic alt text (`enabled`). |
+| GET | `/patchwork/conversations/check_conversation` | Latest conversation with `target_account_id`. |
+| POST | `/patchwork/conversations/read_all` | Mark all conversations read. |
+
+## Account deletion
+
+- `POST /delete_account` with `password`: verifies the password, suspends the account and queues deletion (the username is reserved).
+- `DELETE /patchwork/account_deletion/:id`: deletes an account immediately without reserving email or username.
+
+## Deep links
+
+`/.well-known/apple-app-site-association` and `/.well-known/assetlinks.json` are served from the deep-link variables listed in [Configuration](configuration.md).

@@ -1,151 +1,51 @@
-# Newsmast Mastodon Plugin Content FIlters Features
-## Content Moderation & Filtering
-- **Keyword Filtering**: Block posts containing specific keywords across different timeline types (hashtag, text, or both)
-- **Hashtag Filtering**: Filter content based on hashtags with exact matching
-- **Account Banning**: Automatically ban accounts based on username, display name, or bio content matching filter keywords
-- **Status Banning**: Automatically mark statuses as banned and sensitive when they match filter criteria
-- **Tag Banning**: Automatically mark tags as non-listable and non-trendable when they match filters
-- **Spam Detection**: Separate spam filters with dedicated detection and blocking capabilities
-- **Real-time Processing**: Background workers continuously monitor and apply filters to new content
+# Content filters
 
-## Federation Controls
-- **Threads Integration**: Block or unblock posts from Threads from appearing in timelines
-- **Bluesky Integration**: Control Bluesky post visibility in your server's feeds
-- **Domain Filtering**: Filter statuses based on server settings and federation policies
-- **Cross-platform Content Management**: Fine-grained control over federated content
+Content filters let a community or server operator hide unwanted statuses, hashtags and accounts by keyword. Rules are created in the Newsmast Dashboard and stored in the shared database; the gem enforces them.
 
-## Community Channel Automation
-- **Automated Reblogging**: Automatically boost posts to community channels based on filter rules
-- **Newsmast Bot Integration**: Support for Newsmast-specific boosting via Lambda service
-- **Custom Channel Support**: Configure boost behavior for custom community channels
-- **Group Channel Management**: Manage group channels with automated boosting
-- **Filter-based Boosting**: Only boost posts that pass community-specific keyword filters
+## Data
 
-## Advanced Search Capabilities
-- **Account Search Enhancement**: Enhanced account search with `is_banned` filtering
-- **Banned Content Exclusion**: Search results automatically exclude banned accounts and statuses
-- **Following Network Search**: Advanced search for accounts within your following network
-- **Elasticsearch Integration**: Custom Chewy indices for accounts, statuses, and public statuses
+| Table / model | Purpose |
+| --- | --- |
+| `server_settings` (`ServerSetting`) | Switches. `Content filters` and `Spam filters` turn each filter family on. |
+| `keyword_filters` (`KeywordFilter`) | Global keywords. `filter_type` is `content`, `hashtag` or `both`. |
+| `keyword_filter_groups` (`KeywordFilterGroup`) | Groups keywords under a server setting. |
+| `patchwork_communities_filter_keywords` (`CommunityFilterKeyword`) | Per-community `filter_in` / `filter_out` keywords; `patchwork_community_id` NULL means global. |
 
-## Filter Management
-- **Global Filters**: Server-wide keyword filters that apply to all users
-- **Community Filters**: Community-specific filters with filter-in and filter-out support
-- **Filter Types**: Support for hashtag-only, text-only, or combined filtering
-- **Redis Caching**: Efficient filter caching with 24-hour expiration
-- **Multiple Filter Sources**: Combine ContentFilters::KeywordFilter and ContentFilters::CommunityFilterKeyword
+The gem adds `is_banned` to `statuses` and `accounts`, and uses Mastodon's `listable` / `trendable` flags on tags.
 
-## Performance Optimizations
-- **Batch Processing**: Process accounts, statuses, and tags in configurable batches (default 1000)
-- **Redis Integration**: Fast banned content ID lookups using Redis sorted sets
-- **Database Read Replicas**: Support for read replica routing for heavy queries
-- **Selective Column Loading**: Load only necessary columns for better performance
-- **Progress Tracking**: Real-time progress logging during batch operations
+## When a status is checked
 
-## Timeline Filtering
-- **Home Timeline Filtering**: Filter home feed based on content filters and server settings
-- **Public Timeline Filtering**: Enhanced public feed with reblog and reply filtering options
-- **Excluded Status IDs**: Maintain separate Redis sets for content filters and spam filters
-- **Direct Status Exclusion**: Option to exclude direct messages from timelines
-- **Followed Tags Filtering**: Control visibility of posts from followed hashtags
-- **Reply Filtering**: Option to exclude replies from feed
+- Remote statuses: queued (`BanStatusWorker`) when the record is created.
+- Local statuses: queued after Mastodon finishes post-processing.
 
-## Feed Service Integration
-- **Server Setting Aware**: Automatically apply filters based on server configuration
-- **Federation Filtering**: Filter content based on Threads and Bluesky server settings
-- **Dynamic Filter Application**: Apply content filters and spam filters independently or together
-- **Cache Management**: Efficient banned status ID management in Redis
+For each active keyword under an enabled filter family, `BanStatusService`:
 
-## Database Migrations
-The gem adds the following database columns:
-- `accounts.is_banned` - Boolean flag for banned accounts (default: false)
-- `statuses.is_banned` - Boolean flag for banned statuses (default: false)
+1. Checks the author's username, display name and bio, and bans the account on a match.
+2. For `hashtag` / `both` filters, makes matching tags unlistable and untrendable.
+3. For `content` / `both` filters, matches the keyword as a whole word in the status text (HTML stripped, case-insensitive).
+4. Records banned status IDs in Redis (`content_filters_banned_status_ids`, `spam_filters_banned_status_ids`, and a combined `excluded_status_ids`, capped at about 400 entries).
 
-## Redis Keys
-The gem uses the following Redis keys:
-- `excluded_status_ids` - Combined banned status IDs (content + spam filters)
-- `content_filters_banned_status_ids` - Status IDs banned by content filters
-- `spam_filters_banned_status_ids` - Status IDs banned by spam filters
-- `spam_filters` / `channel:spam_filters` - Hash of spam filter configurations
-- `content_filters` / `channel:content_filters` - Hash of content filter configurations
+A banned status gets `is_banned = true`. If it is local, it is also marked sensitive with the spoiler text `Sensitive content!!!`. Statuses that are not banned continue to channel reblogging when channel mode is enabled (`MAIN_CHANNEL`, `BOOST_BOT_ENABLED`).
 
-## Background Workers
+## Where banned content is hidden
 
-### BanTagWorker
-Checks tags against keyword filters and updates banned status:
-```ruby
-BanTagWorker.perform_async
-```
+- `Status.without_banned` and the `indexable` scope exclude banned statuses, so they do not appear in search indexes.
+- Banned tags are excluded from tag lookups that respect `listable`.
+- Feeds exclude IDs from `FeedService#excluded_status_ids` when the matching setting is on.
+- Statuses from the `Threads` and `Bluesky` domains are excluded from a user's feeds when those server settings are on.
 
-### AccountBannedWorker
-Checks accounts against keyword filters and bans matching accounts:
-```ruby
-AccountBannedWorker.perform_async
-```
+## Bulk re-scan workers
 
-### StatusBannedWorker
-Checks statuses against keyword filters and marks them as banned:
-```ruby
-StatusBannedWorker.perform_async
-```
+Run these from Sidekiq (or the console) after changing filters; they re-check existing data against all global keywords:
 
-### BanStatusWorker
-Checks individual status and applies banning or reblogging based on filters:
-```ruby
-BanStatusWorker.perform_async(status_id)
-```
+| Worker | Action |
+| --- | --- |
+| `StatusBannedWorker` | Bans existing statuses whose text matches. |
+| `BanTagWorker` | Makes matching tags unlistable and bans their statuses. |
+| `AccountBannedWorker` | Bans accounts whose domain, username, display name or bio matches. |
 
-### ReblogChannelsWorker
-Handles automated reblogging to community channels:
-```ruby
-ReblogChannelsWorker.perform_async(status_id, account_id)
-```
+All three log progress and skip records that are already banned.
 
-## Rake Tasks
+## Per-community filters
 
-### Content Filters Management
-```bash
-# Check and update banned accounts
-rake content_filters:update_banned_accounts
-
-# Preview accounts that would be banned (no changes)
-rake content_filters:preview_banned_accounts
-
-# Reset all banned accounts (use with caution)
-rake content_filters:reset_banned_accounts
-
-# Update banned tags
-rake content_filters:update_banned_tags
-
-# Install Chewy index files
-rake content_filters:install
-```
-
-## Usage
-
-### Setting up Keyword Filters
-1. Access the Content Filters section in your Patchwork Dashboard
-2. Add keywords or phrases to block
-3. Choose filter type: hashtag, text, or both
-4. Set whether filters are active
-5. Configure community-specific filters if needed
-
-### Managing Federation Controls
-1. Navigate to Server Settings in the dashboard
-2. Enable/disable Threads integration
-3. Configure Bluesky post visibility
-4. Set federation policies
-
-### Monitoring Banned Content
-The gem automatically:
-- Marks banned statuses as sensitive with spoiler text
-- Sets banned accounts' statuses as banned
-- Updates tag listability and trendability
-- Maintains Redis caches of banned content IDs
-- Logs all banning operations for audit purposes
-
-### Account Search Integration
-The gem enhances account search by:
-- Excluding banned accounts from search results
-- Supporting advanced search within following networks
-- Providing exact word matching for filter keywords
-- Integrating with Elasticsearch via Chewy indices
+`BanStatusService#keyword_matches_in_status?` applies a community's `filter_in` and `filter_out` keywords (hashtag or text) when deciding whether a status belongs in that community's channel. Empty `filter_in` means everything is allowed; empty `filter_out` means nothing is excluded.

@@ -5,10 +5,10 @@ The [`newsmast_mastodon`](https://github.com/TheNewsmastFoundation/newsmast-mast
 ## Contents
 
 - [Configuration](configuration.md): environment variables
-- [Accounts](features.md#accounts): sign-up, password and email flows, notification tokens, settings, account deletion
-- [Content filters](features.md#content-filters): keyword filters, spam filters, banned statuses, tags and accounts
-- [Custom feeds](features.md#custom-feeds): channel feeds, For You timeline, instances timeline, relays
-- [Posts](features.md#posts): drafts, long posts, local-only posts, reactions, link previews, boosting
+- [Accounts](features_accounts.md): sign-up, password and email flows, notification tokens, settings, account deletion
+- [Content filters](features_content_filters.md): keyword filters, spam filters, banned statuses, tags and accounts
+- [Custom feeds](features_custom_feeds.md): channel feeds, For You timeline, instances timeline, relays
+- [Posts](features_posts.md): drafts, long posts, local-only posts, reactions, link previews, boosting
 
 Related reference material in the [newsmast-mastodon repository](https://github.com/TheNewsmastFoundation/newsmast-mastodon):
 

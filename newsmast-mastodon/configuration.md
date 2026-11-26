@@ -1,57 +1,28 @@
-# Newsmast Mastodon Plugin configuration
+# Configuration
 
-## Accounts Management
+The gem is configured through environment variables on the Mastodon host (web and Sidekiq). The complete variable list with required/optional flags is in [configuration/environment-variables.md](https://github.com/TheNewsmastFoundation/newsmast-mastodon/blob/main/docs/configuration/environment-variables.md). This page groups them by feature.
 
-### Account
+| Feature | Variables | Details |
+| --- | --- | --- |
+| Deep links | `IOS_APP_ID`, `IOS_DEEPLINK_PATHS`, `ANDROID_PACKAGE_NAME`, `ANDROID_SHA256_CERT_FINGERPRINTS`, `IOS_APP_STORE_URL`, `ANDROID_APP_STORE_URL` | Serves `/.well-known/apple-app-site-association` and `/.well-known/assetlinks.json`; each returns 404 when its ID is unset. |
+| Push notifications | `FIREBASE_PROJECT_ID`, `FIREBASE_KEY_FILE_NAME`, `NOTIFICATION_SENDER_NAME`, `SKIP_SIGNUP_PUSH_NOTI` | See [Accounts](features.md#accounts). |
+| Cross-instance push | `CROSS_INSTANCE_PUSH_TARGET_URL`, `CROSS_INSTANCE_PUSH_SECRET` | See [Accounts](features.md#accounts). |
+| Sign-up | `ALLOWED_SIGNUP_EMAIL_DOMAIN`, `AUTO_FOLLOW_ENABLED`, `AUTO_FOLLOW_ACCOUNTS`, `WELCOME_EMAIL_DISABLED`, `DEFAULT_EMAIL_NOTIFICATIONS_ENABLED` | See [Accounts](features.md#accounts). |
+| Mail branding | `MAIL_SENDER_NAME`, `MAIL_LOGO_URL`, `PRIVACY_POLICY_URL`, `TERMS_AND_CONDITIONS_URL` | |
+| Alt text AI | `ALT_TEXT_ENABLED`, `ALT_TEXT_URL`, `ALT_TEXT_SECRET`, `ALT_TEXT_USER_TOGGLE`, `SKIP_ALT_TEXT_USER_SETTING` | alttext.ai only. See [Posts](features.md#posts). |
+| Channels and boosting | `LOCAL_DOMAIN`, `MAIN_CHANNEL`, `REBLOG_*`, `BOOST_POST_*`, `BOOST_BOT_ENABLED`, `BOOST_COMMUNITY_BOT_*`, `{USERNAME}_INSTANCE_URL`, `{USERNAME}_CLIENT_ID`, `{USERNAME}_CLIENT_SECRET` | See [Posts](features.md#posts) and [Custom feeds](features.md#custom-feeds). |
+| For You timeline | `FOR_YOU_TIMELINE_ENABLED`, `FOR_YOU_TIMELINE_CHANNELS` | See [Custom feeds](features.md#custom-feeds). |
+| Custom relays | `CUSTOM_RELAY_DOMAINS` | See [Custom feeds](features.md#custom-feeds). |
+| Status reactions | `PATCHWORK_STATUS_REACTION_NAMES`, `PATCHWORK_STATUS_REACTION_EMOJI_LIMIT` | See [Posts](features.md#posts). |
 
-- `AUTO_FOLLOW_ENABLED` - Enable auto-follow on signup (`true` or `false`, defaults to disabled)
-- `AUTO_FOLLOW_ACCOUNTS` - Comma-separated list of account handles to auto-follow after signup
-- `WELCOME_EMAIL_DISABLED` - Disable welcome email sent to new users after signup (set to `true` to disable, defaults to enabled)
+## Dashboard-managed settings
 
-### Push Notifications
+These live in the database (written by the Newsmast Dashboard), not in the environment:
 
-- `FIREBASE_PROJECT_ID` - Firebase project ID for FCM push notifications (required for push notifications to work)
-- `FIREBASE_KEY_FILE_NAME` - Path to Firebase service account JSON key file (required for push notifications to work)
-- `NOTIFICATION_SENDER_NAME` - App name displayed in push notification titles (defaults to `Development Patchwork`)
-
-### Email Configuration
-
-- `MAIL_SENDER_NAME` - Name used as sender for all outgoing emails (defaults to `Development Patchwork`)
-- `MAIL_LOGO_URL` - Default URL for logo image in email templates (defaults to Patchwork demo logo)
-- `IOS_APP_STORE_URL` - URL to iOS app in App Store; when set, displays app store link in email footer
-- `ANDROID_APP_STORE_URL` - URL to Android app in Google Play; when set, displays app store link in email footer
-- `PRIVACY_POLICY_URL` - URL to privacy policy; when set along with `TERMS_AND_CONDITIONS_URL`, displays policy links in email footer
-- `TERMS_AND_CONDITIONS_URL` - URL to terms of service; when set along with `PRIVACY_POLICY_URL`, displays policy links in email footer
-
-### User Preferences
-
-- `DEFAULT_EMAIL_NOTIFICATIONS_ENABLED` - Default email notification state for new users (`true` or `false`)
-- `DASHBOARD_INSTANCE_URL` - Mastodon connected Dashboard URL
-
-### Ghost Integration (Optional)
-
-- `GHOST_URL` - Base URL of Ghost CMS instance (required only if using Ghost subscriptions feature, e.g., `https://newsletter.example.com`)
-- `GHOST_ADMIN_API_KEY` - Ghost Admin API key in format `id:secret` for authentication (required only if using Ghost subscriptions feature)
-
-## Content Filters
-- `LOCAL_DOMAIN` - Your Mastodon server's domain (required for reblog operations)
-- `MAIN_CHANNEL` - Enable/disable main channel reblogging functionality
-- `BOOST_BOT_ENABLED` - Enable/disable automated boost bot
-- `BOOST_COMMUNITY_BOT_URL` - URL for Newsmast bot Lambda service
-- `BOOST_COMMUNITY_BOT_API_KEY` - API key for Newsmast bot authentication
-
-## Posts
-### ALT Text Generation
-- `ALT_TEXT_ENABLED` - Enable/disable automatic ALT text generation (`true`/`false`)
-- `ALT_TEXT_URL` - Base URL for ALT text API service
-- `ALT_TEXT_SECRET` - API key for ALT text service authentication
-- `ALT_TEXT_USER_TOGGLE` - Require user opt-in for ALT text generation (`true`/`false`)
-
-### Post Boosting
-- `BOOST_POST_ENABLED` - Enable/disable automatic post boosting (`true`/`false`)
-- `BOOST_POST_INSTANCE_URL` - Target instance URL for boosting posts
-- `BOOST_POST_API_KEY` - API key for boost service authentication
-- `BOOST_POST_API_SECRET` - API secret for boost service authentication
-- `BOOST_POST_USERNAME` - Username for boost service account
-- `BOOST_POST_USER_DOMAIN` - Domain for boost service account
-
+| Setting name (`server_settings.name`) | Effect |
+| --- | --- |
+| `Content filters`, `Spam filters` | Turn keyword banning on. See [Content filters](features.md#content-filters). |
+| `Long posts` | Raises the post character limit (value in `optional_value`). |
+| `Local only posts` | Reported to clients by `GET /api/v1/local_only_posts/getLocalOnlySetting`. |
+| `Threads`, `Bluesky` | Exclude those federated domains from a user's feeds. |
+| `Automatic Search Opt-out` | New users are created non-discoverable and non-indexable. |

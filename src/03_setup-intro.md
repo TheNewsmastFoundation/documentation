@@ -8,7 +8,7 @@ Secondly, ensure you're running a supported version of Ruby. Our testing matrix 
 
 The installation process will modify the Mastodon database, so you should make sure you have working backup in place in case you run into any issues and that (if necessary) you've notified users of temporary downtime.
 
-After adding the plugin, you may need to configure a few environment variables. These are documented in the [[Customizing Newsmast]] section.
+After adding the plugin, you may need to configure a few environment variables. These are documented in the [[Customizing]] section.
 
 ## Dashboard Prerequisites
 
@@ -29,8 +29,8 @@ Other than required integrations such as email sending, these integrations help 
 * [CiviCRM](https://civicrm.org/) - You can restrict user access to verified members of a CiviCRM instance.
 * [Ghost](https://ghost.org/) - You can notify subscribers when a newsletter or post is published.
 * [WordPress](https://wordpress.org/) - You can notify subscribers when a post is published.
-* [FediBuzz](https://relay.fedi.buzz/) - Pull additional Fediverse content to fill the Federated Timeline of your server.
-* [AltText.ai](https://alttext.ai/) - Used for automatic generation of alt text for images.
+* [FediBuzz](https://relay.fedi.buzz/) - Pull additional Fediverse content in fill the Federated Timeline of your server.
+* [AltText.ai ](https://alttext.ai/) - Used for automatic generation of alt text for images.
 * [Bridgy Fed](https://fed.brid.gy/) & [Route53](https://aws.amazon.com/route53/) - You can use your own domain name for bridged accounts to Bluesky and the ATmosphere.
 
 More information is available shortly on how to enable and customize these integrations via environment variables as part of the setup process.

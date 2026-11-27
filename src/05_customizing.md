@@ -18,7 +18,6 @@ The following variables would need to be set on the server where your Mastodon i
 - `AUTO_FOLLOW_ENABLED` - Enable auto-follow behavior for newly registered users (`true` or `false`, defaults to disabled)
 - `AUTO_FOLLOW_ACCOUNTS` - Comma-separated list of account handles to auto-follow after user registration
 - `WELCOME_EMAIL_DISABLED` - Disable welcome email for newly registered users (set to `true` to disable, defaults to enabled)
-- `ALLOWED_SIGNUP_EMAIL_DOMAIN` - Comma-separated email domains allowed to sign up (all domains are allowed when unset)
 
 ## Channels & Feeds
 
@@ -32,8 +31,6 @@ The following variables would need to be set on the server where your Mastodon i
 - `REBLOG_PASSWORD` - Password used for reblog authentication
 - `REBLOG_CLIENT_ID` - OAuth client ID for the reblog instance (required if reblog enabled)
 - `REBLOG_CLIENT_SECRET` - OAuth client secret for the reblog instance (required if reblog enabled)
-- `FOR_YOU_TIMELINE_ENABLED` - Fill the shared local mix feed used by the For You timeline (`true` or `false`, defaults to disabled)
-- `FOR_YOU_TIMELINE_CHANNELS` - Channels used for the For You timeline <!-- TODO: document the expected value format -->
 
 ## Deep Linking (for mobile apps)
 
@@ -53,8 +50,6 @@ The following integrations can be set up as part of the `newsmast_mastodon` inst
 - `NOTIFICATION_SENDER_NAME` - App name displayed in push notification titles (defaults to `Development Patchwork`)
 - `SKIP_SIGNUP_PUSH_NOTI` - Skip sending push notifications on signup (set to `true` to skip)
 - `ARTICLE_NOTIFICATION_SENDER_NAME` - Sender name for article notifications (defaults to `Development Patchwork`)
-- `CROSS_INSTANCE_PUSH_TARGET_URL` - URL of a trusted partner instance to send cross-instance push requests to (outbound sending is on only when this and the secret are both set)
-- `CROSS_INSTANCE_PUSH_SECRET` - Shared secret used to sign and verify cross-instance push requests (HMAC-SHA256 `X-Signature` header)
 
 ### Email Notifications & Branding
 
@@ -68,7 +63,7 @@ The following integrations can be set up as part of the `newsmast_mastodon` inst
 
 ### CiviCRM Membership Check (Optional)
 
-Add this integration when you need to restrict user access to verified members of a CiviCRM instance. You can exempt specific accounts (such as admins) from the auth restriction.
+Add this integration when you need to restrict user access to verified members of a CiviCRM instance. You can except specific accounts (such as admins) from the auth restriction.
 
 - `CSID_MEMBERSHIP_CHECK_ENABLED` - Enable CiviCRM membership verification (`true` or `false`, defaults to disabled)
 - `CIVICRM_BASE_URL` - Base URL for the CiviCRM instance (required if enabled, e.g., `https://civicrm.example.com`)
@@ -86,7 +81,7 @@ Add this integration to notify subscribers when a Ghost newsletter or post is pu
 - `GHOST_WEBHOOK_SECRET` - Secret token used to verify incoming Ghost webhooks
 - `GHOST_NOTIFICATION_SENDER_NAME` - Sender name for Ghost-related notifications (defaults to `Development Patchwork`)
 
-<!-- TODO: I think we need to add instructions on how to set up the webhook on the Ghost side. -->
+<!-- TODO: I think we need to add instructions on how to set up the webhook on the WordPres side. -->
 
 ### WordPress Integration (Optional)
 
@@ -94,7 +89,7 @@ Add this integration to notify subscribers when a WordPress post is published.
 
 - `WORDPRESS_URL` - WordPress instance URL (automatically added to the host's allowed hosts when set)
 
-<!-- TODO: I think we need to add instructions on how to set up the webhook on the WordPress side. -->
+<!-- TODO: I think we need to add instructions on how to set up the webhook on the WordPres side. -->
 
 ### Custom Relay & Instances Timeline (Optional)
 
@@ -114,8 +109,6 @@ Server-level settings such as long-post limits and local-only post availability 
 - `ALT_TEXT_SECRET` - API key for ALT text service authentication
 - `ALT_TEXT_USER_TOGGLE` - Require user opt-in for ALT text generation when `true`, unless `SKIP_ALT_TEXT_USER_SETTING` is enabled
 - `SKIP_ALT_TEXT_USER_SETTING` - Bypass the per-user alt text setting when `true`; this takes precedence over `ALT_TEXT_USER_TOGGLE`.
-- `PATCHWORK_STATUS_REACTION_NAMES` - Comma-separated emoji allowed as post reactions (defaults to `👍,❤️,😂,😮,😠`)
-- `PATCHWORK_STATUS_REACTION_EMOJI_LIMIT` - Maximum number of allowed reaction emoji (defaults to `5`)
 
 <!-- Q: What is the boost service? And how is this different form BOOST_BOT stuff above? -->
 
@@ -135,13 +128,13 @@ Server-level settings such as long-post limits and local-only post availability 
 
 ## Dashboard Environment Variables
 
-When you install the admin dashboard, you'll need to set these environment variables as part of your server configuration or by copying the `.env.sample` file ([view on GitHub](https://github.com/TheNewsmastFoundation/newsmast-dashboard/blob/main/.env.sample)) over to `.env` and modifying accordingly. You can find additional instructions for determining some of these variables within the `.env.sample` file.
+When you install the admin dashboard, you'll need to set these environment variables as part of your server configuration or by copying the `.env.sample` [[link]] file over to `.env` and modifying accordingly. You can find additional instructions for determining some of these variables within the `.env.sample` file.
 
 ## Rails Runtime
 
 - `RAILS_ENV`, `RAILS_SERVE_STATIC_FILES`, `SECRET_KEY_BASE` - Common settings used to configure Rails application at boot
 - `PORT`, `EXTERNAL_PORT` - The server localhost port (for Docker setup, `EXTERNAL_PORT` should match `PORT`)
-- `STATIC_TOKEN` - API bearer-token validation for selected endpoints
+- `STATIC_TOKEN` API bearer-token validation for selected endpoints
 
 ## Admin Credentials
 
@@ -158,8 +151,8 @@ Obtain these variables from your Mastodon instance under "Development" settings.
 - `LOCAL_DOMAIN` - This should match the domain you set for `LOCAL_DOMAIN` when creating your Mastodon instance
 - `MASTODON_INSTANCE_URL` - The public web address for your Mastodon instance
 - `MASTODON_APPLICATION_TOKEN` - Your dev application access token
-- `MASTODON_CLIENT_ID` - Your dev application client key
-- `MASTODON_CLIENT_SECRET` - Your dev application client secret
+- `MASTODON_CLIENT_ID` - Your  dev application client key
+- `MASTODON_CLIENT_SECRET` - Your  dev application client secret
 
 ## Database Connection
 
@@ -181,7 +174,7 @@ Your Mastodon instance and the admin dashboard can share the same Redis server.
 
 ## Features
 
-Aspects of this functionality are also managed by the [`newsmast_mastodon`](https://github.com/TheNewsmastFoundation/newsmast-mastodon) plugin gem.
+Aspects of this functionality is also managed by the [[newsmast_mastodon]] plugin gem.
 
 - `CHANNELS_ENABLED` - Enable custom Channels support (`true` or `false`, defaults to disabled)
 - `CHANNEL_POST_HASHTAG_ENABLED` - Enable post hashtag management for Channels (`true` or `false`, defaults to disabled)
@@ -218,4 +211,4 @@ Configure your DNS provider credentials for automatic DNS record management. Thi
 - `AWS_ACCESS_DNS_RESOLVE_ID, AWS_SECRET_DNS_RESOLVE_KEY, AWS_DNS_REGION` - These access credentials are provided by Route53.
 
 > [!TIP]
-> It's possible to write your own DNS service integration, in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.
+> [[It's possible to write your own DNS service integration]], in which case you can choose a different value for `DNS_PROVIDER` env var than the default `route53`.

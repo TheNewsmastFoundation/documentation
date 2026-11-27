@@ -31,7 +31,7 @@
         <label class="wa-size-s"><%= t "labels.email_address" %>
           <input id="sidebar-subscribe-email" placeholder="me@example.com" type="email" name="email"></label>
         <label class="wa-size-s"><%= t "labels.first_name" %>
-          <input id="sidebar-subscribe-name" type="text" name="metadata__first_name"></label>
+          <input id="sidebar-subscribe-name type="text" name="metadata__first_name"></label>
 
         <p><button type="submit" class="wa-brand wa-size-s">
             <wa-icon name="envelope"></wa-icon>
@@ -41,6 +41,7 @@
         <p style="opacity:0.75"><small>Free of spam, promise!<br><a href="#/archives" style="font-weight: bold" target="_blank">Visit the Archives</a></small></p>
       </form>
     <% end %>
+  <% end %>
 
   <% if strategy.see_also? %>
     <h2><%= t "marketing.see_also" %></h2>
@@ -50,4 +51,3 @@
     </nav>
   <% end %>
 </details>
-<% end %>
